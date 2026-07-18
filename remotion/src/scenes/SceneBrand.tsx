@@ -10,14 +10,16 @@ export const SceneBrand: React.FC = () => {
     fps: VIDEO.fps,
     config: { damping: 14, mass: 0.8, stiffness: 120 },
   });
-  const lineO = interpolate(frame, [18, 34], [0, 1], {
+  const lineO = interpolate(frame, [16, 30], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
-  const installO = interpolate(frame, [34, 50], [0, 1], {
+  const installO = interpolate(frame, [30, 44], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
+  // cursor blink keeps the closing frame from ever reading as a static export
+  const caretOn = frame % 26 < 14;
 
   return (
     <AbsoluteFill
@@ -30,20 +32,10 @@ export const SceneBrand: React.FC = () => {
     >
       <div
         style={{
-          position: 'absolute',
-          width: 800,
-          height: 800,
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.accent}2e 0%, transparent 60%)`,
-          filter: 'blur(30px)',
-        }}
-      />
-      <div
-        style={{
           transform: `scale(${0.85 + pop * 0.15})`,
           opacity: pop,
           fontFamily: theme.mono,
-          fontSize: 88,
+          fontSize: 84,
           fontWeight: 700,
           color: theme.text,
           letterSpacing: -2,
@@ -55,29 +47,42 @@ export const SceneBrand: React.FC = () => {
       <div
         style={{
           opacity: lineO,
-          marginTop: 20,
-          fontSize: 30,
+          marginTop: 18,
+          fontSize: 26,
           color: theme.dim,
           textAlign: 'center',
         }}
       >
-        Run Claude Code on any model, with a budget.
+        Claude Code, on any model, with a budget.
       </div>
 
       <div
         style={{
           opacity: installO,
-          marginTop: 40,
+          marginTop: 36,
           fontFamily: theme.mono,
-          fontSize: 19,
+          fontSize: 18,
           color: theme.accentSoft,
-          padding: '14px 26px',
+          padding: '13px 24px',
           border: `1px solid ${theme.panelBorder}`,
-          borderRadius: 10,
+          borderRadius: 8,
           backgroundColor: theme.panel,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
         }}
       >
-        curl -fsSL https://raw.githubusercontent.com/maorbril/agentic/main/install.sh | sh
+        <span>curl -fsSL raw.githubusercontent.com/maorbril/agentic/main/install.sh | sh</span>
+        {frame > 34 && (
+          <span
+            style={{
+              width: 8,
+              height: 18,
+              backgroundColor: theme.accent,
+              opacity: caretOn ? 1 : 0,
+            }}
+          />
+        )}
       </div>
     </AbsoluteFill>
   );

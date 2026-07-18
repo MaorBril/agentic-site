@@ -17,17 +17,6 @@ export const TerminalWindow: React.FC<{
         fontFamily: theme.mono,
       }}
     >
-      {/* soft accent glow */}
-      <div
-        style={{
-          position: 'absolute',
-          width: 900,
-          height: 900,
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.accent}22 0%, transparent 60%)`,
-          filter: 'blur(40px)',
-        }}
-      />
       <div
         style={{
           width: 980,

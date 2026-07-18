@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>agentic — Run Claude Code on any model, with a budget</title>
+    <title>agentic — Claude Code on any model, with a budget</title>
     <meta
       name="description"
-      content="agentic wraps Claude Code in a thin local router. Same TUI, same tools — but run any model (Anthropic, OpenAI, xAI, local), meter every token, and enforce budgets."
+      content="agentic wraps Claude Code in a thin local router. Same TUI, same tools — but the model behind it can be Anthropic, OpenAI, xAI, or anything OpenAI-compatible. Every token metered and checked against a budget."
     />
     <link rel="canonical" href="https://github.com/maorbril/agentic" />
 
@@ -14,26 +14,25 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="agentic — Run Claude Code on any model, with a budget"
+      content="agentic — Claude Code on any model, with a budget"
     />
     <meta
       property="og:description"
-      content="Same Claude Code TUI. Any model behind it. Every token metered and checked against budgets you set."
+      content="Same Claude Code TUI. Any model behind it. Every token metered and budgeted."
     />
     <meta property="og:image" content="hero-poster.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="agentic — Claude Code on any model" />
     <meta
       name="twitter:description"
-      content="Same Claude Code TUI. Any model. Metered, priced, and budgeted."
+      content="Same Claude Code TUI. Any model. Metered and budgeted."
     />
     <meta name="twitter:image" content="hero-poster.webp" />
 
-    <!-- Fonts: Inter + JetBrains Mono, swap for fast text paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;680&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;640&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -42,7 +41,6 @@
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%237c7cff'>❯</text></svg>"
     />
 
-    <!-- SEO: structured data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -56,7 +54,6 @@
     </script>
   </head>
   <body>
-    <!-- ============ NAV ============ -->
     <header class="nav">
       <div class="container nav-inner">
         <a class="brand" href="#top"><span class="chev">❯</span> agentic</a>
@@ -69,26 +66,21 @@
             href="https://github.com/maorbril/agentic"
             target="_blank"
             rel="noopener"
-            >★ GitHub</a
+            >GitHub</a
           >
         </nav>
       </div>
     </header>
 
     <main id="top">
-      <!-- ============ HERO ============ -->
       <section class="hero">
         <div class="container">
-          <div class="eyebrow">Multi-model harness for Claude Code</div>
-          <h1>
-            Run Claude Code on
-            <span class="grad">any model</span>, with a budget.
-          </h1>
+          <h1>Run Claude Code on any model, with a budget.</h1>
           <p class="sub">
             agentic wraps Claude Code in a thin local router. Same TUI, same
-            tools, same auto-updates — but the model behind it can be Anthropic,
-            OpenAI, xAI, or anything OpenAI-compatible. Every token metered,
-            priced, and checked against budgets you set.
+            tools, same auto-updates — but the model behind it can be
+            Anthropic, OpenAI, xAI, or anything OpenAI-compatible. Every token
+            is metered, priced, and checked against a budget you set.
           </p>
 
           <div class="cta-row">
@@ -100,7 +92,7 @@
                 | sh</code
               >
               <button id="copy-btn" aria-label="Copy install command">
-                Copy
+                copy
               </button>
             </div>
             <a
@@ -108,11 +100,10 @@
               href="https://github.com/maorbril/agentic"
               target="_blank"
               rel="noopener"
-              >Read the docs →</a
+              >README →</a
             >
           </div>
 
-          <!-- Hero media: Remotion video with CSS terminal fallback -->
           <div class="hero-media" id="hero-media">
             <div class="term-fallback" aria-hidden="true">
               <div class="l"><span class="p">❯</span> agentic<span class="caret"></span></div>
@@ -122,10 +113,10 @@
             </div>
             <video
               id="hero-video"
+              autoplay
               muted
               loop
               playsinline
-              preload="none"
               poster="hero-poster.webp"
               width="1280"
               height="720"
@@ -137,94 +128,82 @@
         </div>
       </section>
 
-      <!-- ============ TRUST ============ -->
-      <section class="trust">
-        <div class="container trust-grid">
-          <span><strong>7</strong> providers supported</span>
-          <span><strong>0</strong> forks of Claude Code</span>
-          <span><strong>1</strong> local router, no daemon</span>
-          <span><strong>MIT</strong> licensed</span>
-        </div>
-      </section>
-
-      <!-- ============ FEATURES ============ -->
       <section id="features">
         <div class="container">
-          <div class="eyebrow">Features</div>
-          <h2>Two questions Claude Code never answered.</h2>
+          <h2>What Claude Code alone doesn't do.</h2>
           <p class="section-lead">
-            How much did that session cost? And can I run the cheap parts on a
-            cheap model? agentic answers both — without touching Claude Code
-            itself.
+            It's a great harness and it keeps getting better — forking it
+            means losing that. But it only talks to one provider, and it
+            never tells you what a session cost.
           </p>
 
           <div class="features">
             <div class="card">
-              <div class="ico">◇</div>
-              <h3>Any model, any provider</h3>
+              <div class="idx">01</div>
+              <h3>Any provider, one CLI</h3>
               <p>
                 Anthropic passthrough is byte-faithful. OpenAI, xAI, Ollama,
-                vLLM, OpenRouter and more work through full request/stream
-                translation. Model names are aliases you define.
+                vLLM, and OpenRouter work through request/stream translation.
+                Model names are aliases you define in
+                <code>config.yaml</code>.
               </p>
             </div>
             <div class="card">
-              <div class="ico">$</div>
-              <h3>Every token metered</h3>
+              <div class="idx">02</div>
+              <h3>Every token priced</h3>
               <p>
-                A local SQLite usage log prices every request. Run
-                <code>agentic cost</code> to break spend down by model, profile,
-                or session — with a live figure in your statusline.
+                A local SQLite log prices every request as it happens.
+                <code>agentic cost --by model</code> breaks spend down by
+                model, profile, or session.
               </p>
             </div>
             <div class="card">
-              <div class="ico">⛨</div>
-              <h3>Budgets that bite</h3>
+              <div class="idx">03</div>
+              <h3>Budgets that actually stop you</h3>
               <p>
-                Daily, weekly, and monthly caps — global or per profile. Hit a
-                cap and the router refuses the next request with a clear message,
-                right in the TUI. In-flight responses are never cut.
+                Daily, weekly, monthly caps, global or per profile. Hit one
+                and the router refuses the next request with a clear message
+                in the TUI — in-flight responses are never cut.
               </p>
             </div>
             <div class="card">
-              <div class="ico">⟲</div>
-              <h3>Dynamic routing</h3>
+              <div class="idx">04</div>
+              <h3>A classifier routes each task</h3>
               <p>
-                Let a cheap classifier triage every task: planning goes to a big
-                model, mechanical edits to a cheap one. The decision sticks for
-                the whole turn — no flip-flopping mid-task.
+                <code>--model auto</code> sends planning to a big model and
+                mechanical edits to a cheap one. The decision holds for the
+                whole turn, so nothing flip-flops mid-task.
               </p>
             </div>
             <div class="card">
-              <div class="ico">◎</div>
+              <div class="idx">05</div>
               <h3>No daemon, no fork</h3>
               <p>
-                The first session binds the router port and serves everyone; when
-                it exits, another takes over in seconds. Claude Code stays
-                unmodified and keeps auto-updating.
+                The first session binds the router port; when it exits,
+                another running session takes over in seconds. Claude Code
+                stays unmodified and keeps auto-updating on its own.
               </p>
             </div>
             <div class="card">
-              <div class="ico">⌘</div>
-              <h3>Profiles &amp; overrides</h3>
+              <div class="idx">06</div>
+              <h3>Profiles you switch on the fly</h3>
               <p>
-                Bundle a main model, a small/fast model for background tasks, and
-                budgets into a profile. Switch with <code>-p cheap</code> or
-                override once with <code>--model grok</code>.
+                Bundle a main model, a fast background model, and a budget
+                into a profile. <code>-p cheap</code> for one session,
+                <code>--model grok</code> for one request.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ HOW IT WORKS ============ -->
       <section id="how">
         <div class="container">
-          <div class="eyebrow">How it works</div>
           <h2>A gateway, plus the CLI around it.</h2>
           <p class="section-lead">
-            Claude Code officially supports pointing at a gateway via
-            <code>ANTHROPIC_BASE_URL</code>. agentic is that gateway.
+            Claude Code already supports pointing at a gateway via
+            <code>ANTHROPIC_BASE_URL</code>. agentic is that gateway — it
+            never touches Claude Code's source.
           </p>
 
           <div class="flow">
@@ -232,33 +211,34 @@
               <div class="step">
                 <div class="n">1</div>
                 <div>
-                  <h4>Install &amp; set up</h4>
+                  <h4>Install</h4>
                   <p>
-                    One curl command drops the binary in <code>~/.local/bin</code>.
-                    <code>agentic setup</code> writes a config, registers the
-                    statusline, and prompts to install any missing deps.
+                    One command drops the binary in
+                    <code>~/.local/bin</code>. <code>agentic setup</code>
+                    writes a config, registers the statusline, and offers to
+                    install anything missing.
                   </p>
                 </div>
               </div>
               <div class="step">
                 <div class="n">2</div>
                 <div>
-                  <h4>Launch a session</h4>
+                  <h4>Run <code>agentic</code></h4>
                   <p>
-                    Run <code>agentic</code>. It starts the local router, points
-                    Claude Code at it via <code>ANTHROPIC_BASE_URL</code>, and
-                    hands you the exact same TUI.
+                    It starts the local router, points Claude Code at it via
+                    <code>ANTHROPIC_BASE_URL</code>, and hands you the exact
+                    same TUI you already know.
                   </p>
                 </div>
               </div>
               <div class="step">
                 <div class="n">3</div>
                 <div>
-                  <h4>Route, meter, cap</h4>
+                  <h4>The router does the rest</h4>
                   <p>
-                    The router resolves your model alias, translates the dialect
-                    if needed, logs priced usage, and gates on your budget —
-                    then streams the response straight back.
+                    Resolves the model alias, translates the dialect if
+                    needed, logs priced usage, checks the budget — then
+                    streams the response straight back.
                   </p>
                 </div>
               </div>
@@ -269,7 +249,7 @@
                 <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
                 ><i style="background:#28c840"></i>
               </div>
-              <pre><span class="c-com"># Claude Code, tracked, on your default profile</span>
+              <pre><span class="c-com"># default profile, tracked</span>
 <span class="c-p">❯</span> <span class="c-cmd">agentic</span>
 
 <span class="c-com"># same session, cheaper models</span>
@@ -288,11 +268,9 @@ qwen     <span class="c-ok">$0.32</span></pre>
         </div>
       </section>
 
-      <!-- ============ COMPARISON ============ -->
       <section>
         <div class="container">
-          <div class="eyebrow">Why agentic</div>
-          <h2>Keep the harness. Lose the lock-in.</h2>
+          <h2>Plain Claude Code vs. agentic</h2>
           <div class="cmp">
             <table>
               <thead>
@@ -304,34 +282,34 @@ qwen     <span class="c-ok">$0.32</span></pre>
               </thead>
               <tbody>
                 <tr>
-                  <td>Same TUI, tools &amp; auto-updates</td>
-                  <td class="yes">✓</td>
-                  <td class="yes">✓</td>
+                  <td>Same TUI, tools, auto-updates</td>
+                  <td class="yes">yes</td>
+                  <td class="yes">yes</td>
                 </tr>
                 <tr>
                   <td>Non-Anthropic models</td>
                   <td class="no">—</td>
-                  <td class="yes">✓ 7 providers</td>
+                  <td class="yes">7 providers</td>
                 </tr>
                 <tr>
                   <td>Per-session cost tracking</td>
                   <td class="no">—</td>
-                  <td class="yes">✓ priced &amp; logged</td>
+                  <td class="yes">priced &amp; logged</td>
                 </tr>
                 <tr>
                   <td>Spend budgets &amp; caps</td>
                   <td class="no">—</td>
-                  <td class="yes">✓ day / week / month</td>
+                  <td class="yes">day / week / month</td>
                 </tr>
                 <tr>
                   <td>Per-task model routing</td>
                   <td class="no">—</td>
-                  <td class="yes">✓ classifier-driven</td>
+                  <td class="yes">classifier-driven</td>
                 </tr>
                 <tr>
                   <td>Requires forking Claude Code</td>
-                  <td class="yes">n/a</td>
-                  <td class="yes">✓ never</td>
+                  <td class="no">n/a</td>
+                  <td class="yes">never</td>
                 </tr>
               </tbody>
             </table>
@@ -339,38 +317,36 @@ qwen     <span class="c-ok">$0.32</span></pre>
         </div>
       </section>
 
-      <!-- ============ FAQ ============ -->
       <section id="faq">
         <div class="container">
-          <div class="eyebrow">FAQ</div>
-          <h2>The fine print.</h2>
+          <h2>Fine print</h2>
           <div class="faq">
             <details open>
               <summary>How is this billed?</summary>
               <p>
-                Traffic through the router is billed to your <strong>API
-                keys</strong>, not your Claude Pro/Max subscription. OAuth
-                credentials are never proxied. For subscription billing, use a
-                <code>passthrough: true</code> profile — normal claude, no
-                tracking.
+                Traffic through the router is billed to your
+                <strong>API keys</strong>, not your Claude Pro/Max
+                subscription. OAuth credentials are never proxied. For
+                subscription billing, use a <code>passthrough: true</code>
+                profile — normal claude, no tracking.
               </p>
             </details>
             <details>
-              <summary>Do non-Anthropic models work as well?</summary>
+              <summary>Do the non-Anthropic models feel as good?</summary>
               <p>
-                They work through translation, but Claude Code's prompts and tool
-                patterns are tuned for Claude, so expect them to be clunkier in
-                the main loop. They shine as cheap workhorses for background
-                tasks and subagents.
+                They work through translation, but Claude Code's prompts and
+                tool patterns are tuned for Claude, so expect them to be
+                clunkier in the main loop. They're better used as cheap
+                workhorses for background tasks and subagents.
               </p>
             </details>
             <details>
               <summary>Is Claude Code modified?</summary>
               <p>
                 No. agentic launches the unmodified, auto-updating
-                <code>claude</code> binary and points it at the local router via
-                <code>ANTHROPIC_BASE_URL</code> — an officially supported gateway
-                hook.
+                <code>claude</code> binary and points it at the local router
+                via <code>ANTHROPIC_BASE_URL</code> — an officially supported
+                gateway hook.
               </p>
             </details>
             <details>
@@ -383,21 +359,20 @@ qwen     <span class="c-ok">$0.32</span></pre>
               </p>
             </details>
             <details>
-              <summary>What does it cost?</summary>
+              <summary>What does agentic itself cost?</summary>
               <p>
-                agentic is free and MIT-licensed. You only pay your model
-                providers for the tokens you use — which is exactly what agentic
-                helps you measure and cap.
+                Nothing — it's MIT-licensed. You pay your model providers for
+                the tokens you use, which is exactly what agentic measures and
+                caps.
               </p>
             </details>
           </div>
         </div>
       </section>
 
-      <!-- ============ FINAL CTA ============ -->
       <section class="final">
         <div class="container">
-          <h2>Start a tracked session in one command.</h2>
+          <h2>One command to a tracked session.</h2>
           <div class="cta-row">
             <div class="install">
               <span class="dollar">$</span>
@@ -406,11 +381,8 @@ qwen     <span class="c-ok">$0.32</span></pre>
                 https://raw.githubusercontent.com/maorbril/agentic/main/install.sh
                 | sh</code
               >
-              <button
-                class="copy-btn2"
-                aria-label="Copy install command"
-              >
-                Copy
+              <button class="copy-btn2" aria-label="Copy install command">
+                copy
               </button>
             </div>
             <a
@@ -418,14 +390,13 @@ qwen     <span class="c-ok">$0.32</span></pre>
               href="https://github.com/maorbril/agentic"
               target="_blank"
               rel="noopener"
-              >View on GitHub →</a
+              >GitHub →</a
             >
           </div>
         </div>
       </section>
     </main>
 
-    <!-- ============ FOOTER ============ -->
     <footer>
       <div class="container foot-inner">
         <div>
@@ -441,7 +412,7 @@ qwen     <span class="c-ok">$0.32</span></pre>
       </div>
     </footer>
 
-    <div class="toast" id="toast">Copied to clipboard</div>
+    <div class="toast" id="toast">Copied</div>
 
     <script src="main.js" defer></script>
   </body>
