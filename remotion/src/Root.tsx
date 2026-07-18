@@ -8,6 +8,7 @@ import { SceneLaunch } from './scenes/SceneLaunch';
 import { SceneRouting } from './scenes/SceneRouting';
 import { SceneCost } from './scenes/SceneCost';
 import { SceneBrand } from './scenes/SceneBrand';
+import { SceneDemo, DEMO_DURATION } from './scenes/SceneDemo';
 
 // Scene durations (frames @30fps) and the cross-fade length between them.
 const D = { launch: 100, routing: 120, cost: 105, brand: 95 };
@@ -50,13 +51,23 @@ const Hero: React.FC = () => (
 
 export const RemotionRoot: React.FC = () => {
   return (
-    <Composition
-      id="Hero"
-      component={Hero}
-      durationInFrames={HERO_DURATION}
-      fps={VIDEO.fps}
-      width={VIDEO.width}
-      height={VIDEO.height}
-    />
+    <>
+      <Composition
+        id="Hero"
+        component={Hero}
+        durationInFrames={HERO_DURATION}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="Demo"
+        component={SceneDemo}
+        durationInFrames={DEMO_DURATION}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+    </>
   );
 };

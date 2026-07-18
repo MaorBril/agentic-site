@@ -254,6 +254,17 @@ header.nav {
 .hero-media.video-failed video {
   display: none;
 }
+/* Static-image fallback (used where there's no CSS-terminal animation to fall
+   back to, e.g. the demo section) — same failed-state trigger as above. */
+.media-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-media.video-failed .media-fallback {
+  display: block;
+}
 .term-fallback .l {
   line-height: 2.1;
   opacity: 0;

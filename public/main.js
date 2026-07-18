@@ -33,33 +33,36 @@
     b.addEventListener('click', copy);
   });
 
-  /* ---- hero video: fall back to the CSS terminal only if it can't play ---- */
-  var media = document.getElementById('hero-media');
-  var video = document.getElementById('hero-video');
-  if (!media || !video) return;
+  /* ---- media videos: fall back to poster/CSS-terminal only if they can't
+     play. Same treatment for every ".hero-media" block on the page (hero,
+     demo, ...) — each just needs its own <video> child. ---- */
+  document.querySelectorAll('.hero-media').forEach(function (media) {
+    var video = media.querySelector('video');
+    if (!video) return;
 
-  function fallback() {
-    media.classList.add('video-failed');
-  }
-  video.addEventListener('error', fallback);
-  // If autoplay is blocked entirely (rare with muted+playsinline, but some
-  // in-app browsers still refuse), retry once on first user interaction.
-  video.addEventListener(
-    'canplay',
-    function () {
-      var p = video.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(function () {
-          document.body.addEventListener(
-            'click',
-            function () {
-              video.play().catch(fallback);
-            },
-            { once: true }
-          );
-        });
-      }
-    },
-    { once: true }
-  );
+    function fallback() {
+      media.classList.add('video-failed');
+    }
+    video.addEventListener('error', fallback);
+    // If autoplay is blocked entirely (rare with muted+playsinline, but some
+    // in-app browsers still refuse), retry once on first user interaction.
+    video.addEventListener(
+      'canplay',
+      function () {
+        var p = video.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(function () {
+            document.body.addEventListener(
+              'click',
+              function () {
+                video.play().catch(fallback);
+              },
+              { once: true }
+            );
+          });
+        }
+      },
+      { once: true }
+    );
+  });
 })();

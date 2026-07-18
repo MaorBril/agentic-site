@@ -3,6 +3,10 @@ remotion/node_modules/
 remotion/out/
 remotion/.remotion/
 
+# Agent/tool-installed skill state, not project source
+remotion/.agents/
+remotion/.claude/
+
 # Netlify local state
 .netlify/
 

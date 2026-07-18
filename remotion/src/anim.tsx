@@ -12,7 +12,16 @@ export const Typewriter: React.FC<{
   duration: number;
   caret?: boolean;
   color?: string;
-}> = ({ text, startFrame, duration, caret = true, color = theme.text }) => {
+  /** Stop showing the caret after this frame (e.g. once the command is "submitted"). */
+  hideCaretAfter?: number;
+}> = ({
+  text,
+  startFrame,
+  duration,
+  caret = true,
+  color = theme.text,
+  hideCaretAfter,
+}) => {
   const frame = useCurrentFrame();
   const chars = Math.round(
     interpolate(frame, [startFrame, startFrame + duration], [0, text.length], {
@@ -21,7 +30,9 @@ export const Typewriter: React.FC<{
     })
   );
   const done = chars >= text.length;
-  const showCaret = caret && frame >= startFrame && (!done || frame % 30 < 15);
+  const submitted = hideCaretAfter != null && frame >= hideCaretAfter;
+  const showCaret =
+    caret && frame >= startFrame && !submitted && (!done || frame % 30 < 15);
 
   return (
     <span style={{ color }}>
