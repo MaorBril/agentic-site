@@ -1,0 +1,8 @@
+# Remotion build artifacts
+remotion/node_modules/
+remotion/out/
+remotion/.remotion/
+
+# OS / editor
+.DS_Store
+*.log
