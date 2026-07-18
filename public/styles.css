@@ -480,6 +480,80 @@ header.nav {
   font-family: var(--mono);
 }
 
+/* ---------- competitive landscape ---------- */
+.landscape {
+  margin-top: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+.landscape table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.landscape th,
+.landscape td {
+  padding: 14px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-soft);
+}
+.landscape th {
+  color: var(--faint);
+  font-weight: 500;
+  font-size: 11.5px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.landscape td:first-child,
+.landscape th:first-child {
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.landscape tr:last-child td {
+  border-bottom: none;
+}
+.landscape td,
+.landscape th {
+  color: var(--dim);
+  line-height: 1.55;
+}
+.landscape .col-a {
+  color: var(--text);
+  background: rgba(124, 124, 255, 0.05);
+}
+.landscape th.col-a {
+  color: var(--accent-soft);
+  background: rgba(124, 124, 255, 0.08);
+}
+.landscape code {
+  color: var(--accent-soft);
+  font-size: 12.5px;
+}
+.landscape-note {
+  margin-top: 24px;
+  color: var(--dim);
+  font-size: 14.5px;
+  max-width: 820px;
+}
+.landscape-note code {
+  color: var(--accent-soft);
+}
+.landscape-note a {
+  color: var(--accent-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.landscape-note a:hover {
+  text-decoration-color: var(--accent-soft);
+}
+
 /* ---------- FAQ ---------- */
 .faq {
   margin-top: 40px;

@@ -3,6 +3,9 @@ remotion/node_modules/
 remotion/out/
 remotion/.remotion/
 
+# Netlify local state
+.netlify/
+
 # OS / editor
 .DS_Store
 *.log

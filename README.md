@@ -29,10 +29,13 @@ agentic-site/
 
 ## Preview the site locally
 
-Any static file server works. From the repo root:
+Use a static file server that supports HTTP Range requests — the hero
+video needs `206 Partial Content` to autoplay in Chrome, and
+`python3 -m http.server` always returns `200` with the full file, which
+makes the video silently fail to autoplay there. From the repo root:
 
 ```bash
-cd public && python3 -m http.server 8080
+cd public && npx serve -l 8080
 # open http://localhost:8080
 ```
 

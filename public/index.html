@@ -59,6 +59,7 @@
         <a class="brand" href="#top"><span class="chev">❯</span> agentic</a>
         <nav class="nav-links">
           <a href="#features" class="hide-sm">Features</a>
+          <a href="#compare" class="hide-sm">Compare</a>
           <a href="#how" class="hide-sm">How it works</a>
           <a href="#faq" class="hide-sm">FAQ</a>
           <a
@@ -194,6 +195,98 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="compare">
+        <div class="container">
+          <h2>Three ways to get Claude Code off one provider.</h2>
+          <p class="section-lead">
+            agentic isn't the only answer to "I want Claude Code but not
+            locked to Anthropic." Here's how the options actually differ.
+          </p>
+
+          <div class="landscape">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="col-a">agentic</th>
+                  <th>claude-code-router · proxy forks · LiteLLM</th>
+                  <th>OpenCode, Crush, Goose, Aider</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Harness</td>
+                  <td class="col-a">
+                    Real Claude Code, unmodified, auto-updating
+                  </td>
+                  <td>Real Claude Code, unmodified</td>
+                  <td>
+                    Different harness entirely — own prompts, tools, TUI
+                  </td>
+                </tr>
+                <tr>
+                  <td>Runs as</td>
+                  <td class="col-a">
+                    Static Go binary, no daemon (leader election over a
+                    fixed port)
+                  </td>
+                  <td>Daemon / server process you deploy and administer</td>
+                  <td>Standalone CLI you run instead of Claude Code</td>
+                </tr>
+                <tr>
+                  <td>Cost &amp; budgets</td>
+                  <td class="col-a">
+                    First-class CLI: <code>agentic cost</code>, live
+                    statusline, hard-stop daily / weekly / monthly budgets
+                  </td>
+                  <td>Usually a dashboard (LiteLLM) or not built in</td>
+                  <td>Varies by tool, rarely budget-gated</td>
+                </tr>
+                <tr>
+                  <td>Model routing</td>
+                  <td class="col-a">
+                    Aliases + a built-in LLM-classifier tier router
+                    (<code>auto</code>), sticky per turn
+                  </td>
+                  <td>
+                    Rule-based routing configs; no classifier-based
+                    tiering
+                  </td>
+                  <td>Manual model switch, no auto-routing</td>
+                </tr>
+                <tr>
+                  <td>Memory / cross-instance</td>
+                  <td class="col-a">
+                    Composes with
+                    <a
+                      href="https://github.com/MaorBril/clauder"
+                      target="_blank"
+                      rel="noopener"
+                      >clauder</a
+                    >
+                    — separate binary, optional
+                  </td>
+                  <td>Not their concern</td>
+                  <td>Varies</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="landscape-note">
+            agentic doesn't try to be a better harness than Claude Code — it
+            keeps Claude Code exactly as Anthropic ships it and only swaps
+            what's behind <code>ANTHROPIC_BASE_URL</code>. Want a different
+            agent loop entirely? OpenCode, Crush, Goose, and Aider are the
+            right layer to look at. Want a gateway you deploy and administer
+            for a team? LiteLLM is more mature for that. agentic is for one
+            developer who wants <code>claude</code>, unmodified, with a
+            budget and a cheap-model escape hatch — installed in one command,
+            with nothing to operate.
+          </p>
         </div>
       </section>
 
