@@ -15,18 +15,15 @@ agentic-site/
 │   ├── hero.webm        ← rendered hero video (VP9)
 │   ├── hero.mp4         ← rendered hero video (H.264 fallback)
 │   ├── hero-poster.webp ← poster / LCP image
-│   ├── demo.webm        ← rendered demo video (VP9)
-│   ├── demo.mp4         ← rendered demo video (H.264 fallback)
-│   ├── demo-poster.webp ← poster for the demo section
 │   ├── robots.txt
 │   └── sitemap.xml
-└── remotion/            ← source for the videos (not deployed)
+└── remotion/            ← source for the hero video (not deployed)
     ├── src/
-    │   ├── Root.tsx         ← compositions (Hero, Demo) + scene timeline
+    │   ├── Root.tsx         ← composition (renders SceneDemo as Hero)
     │   ├── theme.ts         ← shared design tokens (mirror of styles.css)
-    │   ├── Terminal.tsx
     │   ├── anim.tsx         ← Typewriter / FadeUp helpers
-    │   └── scenes/          ← Launch → Routing → Cost → Brand, plus Demo
+    │   └── scenes/
+    │       └── SceneDemo.tsx ← the hero scene: auto-routing demo
     └── package.json
 ```
 
@@ -52,13 +49,13 @@ npm run studio        # interactive Remotion Studio preview
 
 ## Re-render the hero video
 
-After editing scenes, re-render and copy the artifacts into `public/`:
+After editing the scene, re-render and copy the artifacts into `public/`:
 
 ```bash
 cd remotion
 npm run render:webm   # → out/hero.webm  (VP9, crf 18)
 npm run render:mp4    # → out/hero.mp4   (H.264, crf 18)
-npm run still         # → out/poster.png (frame 300 = brand card)
+npm run still         # → out/poster.png (frame 280 = statusline)
 
 # then refresh the site's copies:
 cp out/hero.webm out/hero.mp4 ../public/
@@ -66,24 +63,6 @@ cwebp -q 82 out/poster.png -o ../public/hero-poster.webp
 ```
 
 (`npm run build` runs all three renders in one go.)
-
-## Re-render the demo video
-
-Same idea, for the `Demo` composition (`src/scenes/SceneDemo.tsx`):
-
-```bash
-cd remotion
-npm run render:demo-webm   # → out/demo.webm (VP9, crf 18)
-npm run render:demo-mp4    # → out/demo.mp4  (H.264, crf 18)
-npx remotion still Demo out/demo-poster.png --frame=280  # brand/statusline frame
-
-# then refresh the site's copies:
-cp out/demo.webm out/demo.mp4 ../public/
-cwebp -q 82 out/demo-poster.png -o ../public/demo-poster.webp
-```
-
-(`npm run build:demo` runs both video renders in one go — the poster still
-needs the manual `remotion still` + `cwebp` steps above.)
 
 ## Deploy
 

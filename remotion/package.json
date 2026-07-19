@@ -7,11 +7,8 @@
     "studio": "remotion studio",
     "render:mp4": "remotion render Hero out/hero.mp4 --codec=h264 --crf=18",
     "render:webm": "remotion render Hero out/hero.webm --codec=vp9 --crf=18",
-    "still": "remotion still Hero out/poster.png --frame=40",
-    "build": "npm run render:webm && npm run render:mp4 && npm run still",
-    "render:demo-mp4": "remotion render Demo out/demo.mp4 --codec=h264 --crf=18",
-    "render:demo-webm": "remotion render Demo out/demo.webm --codec=vp9 --crf=18",
-    "build:demo": "npm run render:demo-webm && npm run render:demo-mp4"
+    "still": "remotion still Hero out/poster.png --frame=280",
+    "build": "npm run render:webm && npm run render:mp4 && npm run still"
   },
   "dependencies": {
     "@remotion/cli": "4.0.286",
