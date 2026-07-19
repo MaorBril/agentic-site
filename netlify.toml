@@ -1,0 +1,29 @@
+# Netlify build config for agentic-site
+
+[build]
+# Publish the 'public' folder, not the repo root
+publish = "public"
+# No build step needed — site is static HTML/CSS/JS
+command = ""
+
+# Cache headers for videos (long-lived, immutable hashes if needed)
+[[headers]]
+for = "/demo.*"
+[headers.values]
+cache-control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/hero.*"
+[headers.values]
+cache-control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/*.webp"
+[headers.values]
+cache-control = "public, max-age=31536000, immutable"
+
+# HTML shouldn't be cached aggressively — content updates
+[[headers]]
+for = "/"
+[headers.values]
+cache-control = "public, max-age=0, must-revalidate"
