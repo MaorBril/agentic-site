@@ -7,7 +7,7 @@
     "studio": "remotion studio",
     "render:mp4": "remotion render Hero out/hero.mp4 --codec=h264 --crf=18",
     "render:webm": "remotion render Hero out/hero.webm --codec=vp9 --crf=18",
-    "still": "remotion still Hero out/poster.png --frame=280",
+    "still": "remotion still Hero out/poster.png --frame=560",
     "build": "npm run render:webm && npm run render:mp4 && npm run still"
   },
   "dependencies": {

@@ -81,9 +81,10 @@
             agentic wraps Claude Code in a thin local router. Same TUI, same
             tools, same auto-updates — but the model behind it can be
             Anthropic, OpenAI, xAI, or anything OpenAI-compatible. Every token
-            is metered, priced, and checked against a budget you set. A built-in
-            classifier routes each task to the right model — cheaper for edits,
-            smarter for planning.
+            is metered, priced, and checked against a budget you set. Two
+            cheap classifiers watch every turn — one picks the model, the
+            other decides if the task needs a recurring loop instead of a
+            single reply.
           </p>
 
           <div class="cta-row">
@@ -113,7 +114,7 @@
               src="hero-poster.webp"
               width="1280"
               height="720"
-              alt="agentic terminal: auto routes a mechanical rename to qwen and an architecture plan to opus, with a live cost statusline"
+              alt="agentic terminal: auto routes a rename to qwen, a plan to opus, and arms a recurring goal loop for a flaky test suite — with a live cost statusline"
             />
             <video
               id="hero-video"
@@ -172,11 +173,14 @@
             </div>
             <div class="card">
               <div class="idx">04</div>
-              <h3>A classifier routes each task</h3>
+              <h3>Two classifiers watch every turn</h3>
               <p>
                 <code>--model auto</code> sends planning to a big model and
-                mechanical edits to a cheap one. The decision holds for the
-                whole turn, so nothing flip-flops mid-task.
+                mechanical edits to a cheap one, sticky for the whole turn. A
+                second pass, Auto Goal, flags tasks that need a recurring
+                check-in — a flaky test, a long build — and nudges Claude
+                Code toward <code>ScheduleWakeup</code> or <code>/loop</code>
+                instead of a single reply.
               </p>
             </div>
             <div class="card">

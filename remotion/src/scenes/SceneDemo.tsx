@@ -10,19 +10,24 @@ import { theme } from '../theme';
 import { Typewriter } from '../anim';
 
 /**
- * The "wow" demo: `auto` routes a mechanical task to a cheap local model and a
- * planning task to Opus, while the live spend statusline ticks up by fractions
- * of a cent. The statusline is the hero element.
+ * The "wow" demo: `auto` routes a mechanical task to a cheap local model, a
+ * planning task to Opus, and a monitoring-style task trips a second, amber
+ * "Auto Goal" classifier that arms a recurring check-in instead of just
+ * replying once. The live spend statusline ticks up by fractions of a cent
+ * throughout — it's the hero element, alongside the new goal badge.
  *
  * Timeline (30fps):
- *   0–20    window in, empty prompt, day $2.10 / $25
+ *   0–20    window in, empty prompt, day $2.100 / $25
  *   20–70   type mechanical prompt
- *   70–100  classifier chip: auto → light → qwen
- *   100–150 qwen edits stream, sess + day tick a hair
+ *   70–104  classifier chip: auto → light → qwen
+ *   104–150 qwen edits stream, sess + day tick a hair
  *   150–210 type planning prompt
- *   210–240 classifier chip: auto → deep → opus
- *   240–330 opus plan streams, day climbs to 2.16
- *   330–380 statusline emphasis
+ *   210–246 classifier chip: auto → deep → opus
+ *   246–340 opus plan streams, day climbs to 2.163
+ *   340–400 type monitoring prompt
+ *   400–434 tier classifier chip: auto → standard → sonnet
+ *   434–468 goal classifier chip: auto → goal → ScheduleWakeup (amber)
+ *   468–600 goal armed, statusline gains "⟳ goal" badge, day → 2.169
  */
 
 const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
@@ -30,9 +35,13 @@ const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
 const DAY_START = 2.1;
 const DAY_AFTER_QWEN = 2.104;
 const DAY_AFTER_OPUS = 2.163;
+const DAY_AFTER_GOAL = 2.169;
 const CAP = 25;
 
-export const DEMO_DURATION = 400;
+const GOAL_REASON = 'flaky e2e suite';
+const GOAL_RESOLVED_AT = 446; // goal chip's own local frame-12 reveal, absolute
+
+export const DEMO_DURATION = 600;
 
 export const SceneDemo: React.FC = () => {
   const frame = useCurrentFrame();
@@ -44,9 +53,10 @@ export const SceneDemo: React.FC = () => {
   });
 
   // Which model the statusline currently shows.
-  const model = frame < 100 ? 'auto' : frame < 240 ? 'qwen' : 'opus';
+  const model =
+    frame < 100 ? 'auto' : frame < 240 ? 'qwen' : frame < 468 ? 'opus' : 'sonnet';
 
-  // Session + day spend climb in two steps as each turn resolves.
+  // Session + day spend climb in three steps as each turn resolves.
   const sess =
     frame < 100
       ? 0
@@ -55,7 +65,12 @@ export const SceneDemo: React.FC = () => {
           extrapolateLeft: 'clamp',
           extrapolateRight: 'clamp',
         })
-      : interpolate(frame, [240, 300], [0.004, 0.063], {
+      : frame < 468
+      ? interpolate(frame, [240, 300], [0.004, 0.063], {
+          extrapolateLeft: 'clamp',
+          extrapolateRight: 'clamp',
+        })
+      : interpolate(frame, [468, 500], [0.063, 0.069], {
           extrapolateLeft: 'clamp',
           extrapolateRight: 'clamp',
         });
@@ -68,10 +83,17 @@ export const SceneDemo: React.FC = () => {
           extrapolateLeft: 'clamp',
           extrapolateRight: 'clamp',
         })
-      : interpolate(frame, [240, 300], [DAY_AFTER_QWEN, DAY_AFTER_OPUS], {
+      : frame < 468
+      ? interpolate(frame, [240, 300], [DAY_AFTER_QWEN, DAY_AFTER_OPUS], {
+          extrapolateLeft: 'clamp',
+          extrapolateRight: 'clamp',
+        })
+      : interpolate(frame, [468, 500], [DAY_AFTER_OPUS, DAY_AFTER_GOAL], {
           extrapolateLeft: 'clamp',
           extrapolateRight: 'clamp',
         });
+
+  const goalReason = frame >= GOAL_RESOLVED_AT ? GOAL_REASON : undefined;
 
   return (
     <AbsoluteFill
@@ -137,7 +159,7 @@ export const SceneDemo: React.FC = () => {
             />
           </div>
 
-          <Sequence from={70} durationInFrames={330} layout="none">
+          <Sequence from={70} durationInFrames={530} layout="none">
             <ClassifierChip
               tier="light"
               model="qwen"
@@ -146,7 +168,7 @@ export const SceneDemo: React.FC = () => {
             />
           </Sequence>
 
-          <Sequence from={104} durationInFrames={296} layout="none">
+          <Sequence from={104} durationInFrames={496} layout="none">
             <ResultLines
               lines={[
                 { icon: '✓', text: 'edited 3 files · 12 call-sites' },
@@ -158,7 +180,7 @@ export const SceneDemo: React.FC = () => {
 
           {/* Turn 2 — planning task → opus.
               Inside a Sequence, so Typewriter frames are LOCAL to from={150}. */}
-          <Sequence from={150} durationInFrames={250} layout="none">
+          <Sequence from={150} durationInFrames={450} layout="none">
             <div style={{ marginTop: 18, display: 'flex', gap: 12 }}>
               <span style={{ color: theme.accent }}>❯</span>
               <Typewriter
@@ -170,7 +192,7 @@ export const SceneDemo: React.FC = () => {
             </div>
           </Sequence>
 
-          <Sequence from={210} durationInFrames={190} layout="none">
+          <Sequence from={210} durationInFrames={390} layout="none">
             <ClassifierChip
               tier="deep"
               model="opus"
@@ -179,7 +201,7 @@ export const SceneDemo: React.FC = () => {
             />
           </Sequence>
 
-          <Sequence from={246} durationInFrames={154} layout="none">
+          <Sequence from={246} durationInFrames={354} layout="none">
             <ResultLines
               lines={[
                 { icon: '›', text: 'drafting migration plan · 5 steps' },
@@ -188,10 +210,63 @@ export const SceneDemo: React.FC = () => {
               color={theme.accentSoft}
             />
           </Sequence>
+
+          {/* Turn 3 — monitoring task → tier classifier picks sonnet, AND a
+              second, independent classifier flags it as loop-worthy (Auto
+              Goal), nudging Claude Code toward ScheduleWakeup / `/loop`
+              instead of a single reply. */}
+          <Sequence from={340} durationInFrames={260} layout="none">
+            <div style={{ marginTop: 18, display: 'flex', gap: 12 }}>
+              <span style={{ color: theme.accent }}>❯</span>
+              <Typewriter
+                text="retry the flaky e2e suite until it's green"
+                startFrame={8}
+                duration={38}
+                hideCaretAfter={60}
+              />
+            </div>
+          </Sequence>
+
+          <Sequence from={400} durationInFrames={200} layout="none">
+            <ClassifierChip
+              tier="standard"
+              model="sonnet"
+              color={theme.cyan}
+              note="test monitoring"
+            />
+          </Sequence>
+
+          <Sequence from={434} durationInFrames={166} layout="none">
+            <ClassifierChip
+              tier="goal"
+              model="ScheduleWakeup"
+              color={theme.amber}
+              note="flaky suite needs retries"
+            />
+          </Sequence>
+
+          <Sequence from={468} durationInFrames={132} layout="none">
+            <ResultLines
+              lines={[
+                {
+                  icon: '⟳',
+                  text: 'goal loop armed · rechecks every 5m until green',
+                },
+              ]}
+              color={theme.amber}
+            />
+          </Sequence>
         </div>
 
         {/* statusline — the hero */}
-        <StatusLine model={model} sess={sess} day={day} cap={CAP} frame={frame} />
+        <StatusLine
+          model={model}
+          sess={sess}
+          day={day}
+          cap={CAP}
+          frame={frame}
+          goalReason={goalReason}
+        />
       </div>
 
       {/* one-line caption under the window */}
@@ -207,8 +282,9 @@ export const SceneDemo: React.FC = () => {
           }),
         }}
       >
-        A <span style={{ color: theme.text }}>$0.0005</span> classifier picks the
-        model. You never think about it.
+        Two cheap classifiers watch every turn —{' '}
+        <span style={{ color: theme.text }}>one picks the model</span>, the
+        other decides if it needs a loop.
       </div>
     </AbsoluteFill>
   );
@@ -306,14 +382,15 @@ const StatusLine: React.FC<{
   day: number;
   cap: number;
   frame: number;
-}> = ({ model, sess, day, cap, frame }) => {
+  goalReason?: string;
+}> = ({ model, sess, day, cap, frame, goalReason }) => {
   const pct = day / cap;
   const cells = 8;
   const filled = Math.max(1, Math.round(pct * cells));
   const bar = '█'.repeat(filled) + '░'.repeat(cells - filled);
 
   // subtle emphasis pulse near the end
-  const emph = interpolate(frame, [330, 350, 380], [0, 1, 0.4], {
+  const emph = interpolate(frame, [530, 550, 580], [0, 1, 0.4], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -324,6 +401,14 @@ const StatusLine: React.FC<{
       : model === 'qwen'
       ? theme.green
       : theme.cyan;
+
+  // Goal badge fades/slides in the same way the classifier chips do.
+  const goalFrame = frame - GOAL_RESOLVED_AT;
+  const goalO = interpolate(goalFrame, [0, 10], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+    easing: easeOut,
+  });
 
   return (
     <div
@@ -351,6 +436,14 @@ const StatusLine: React.FC<{
         <span style={{ color: theme.text }}>${day.toFixed(3)}</span>
         <span style={{ color: theme.faint }}> / ${cap.toFixed(2)}</span>
       </span>
+      {goalReason && (
+        <span style={{ opacity: goalO, display: 'flex', alignItems: 'center', gap: 14 }}>
+          <Sep />
+          <span style={{ color: theme.amber }}>
+            ⟳ goal <span style={{ color: theme.faint }}>({goalReason})</span>
+          </span>
+        </span>
+      )}
       <span
         style={{
           marginLeft: 'auto',
