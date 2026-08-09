@@ -5,10 +5,17 @@
   "description": "Remotion project that renders the agentic hero demo video.",
   "scripts": {
     "studio": "remotion studio",
-    "render:mp4": "remotion render Hero out/hero.mp4 --codec=h264 --crf=18",
-    "render:webm": "remotion render Hero out/hero.webm --codec=vp9 --crf=18",
-    "still": "remotion still Hero out/poster.png --frame=560",
-    "build": "npm run render:webm && npm run render:mp4 && npm run still"
+    "typecheck": "tsc --noEmit",
+    "hero:webm": "remotion render HeroContext out/hero-context-v2.webm --codec=vp9 --crf=18",
+    "hero:mp4": "remotion render HeroContext out/hero-context-v2.mp4 --codec=h264 --crf=18",
+    "hero:poster": "remotion still HeroContext out/hero-context-v2-poster.png --frame=330",
+    "hero": "npm run hero:webm && npm run hero:mp4 && npm run hero:poster",
+    "eval:webm": "remotion render EvalPaired out/eval-paired-v1.webm --codec=vp9 --crf=18",
+    "eval:mp4": "remotion render EvalPaired out/eval-paired-v1.mp4 --codec=h264 --crf=18",
+    "eval:poster": "remotion still EvalPaired out/eval-paired-v1-poster.png --frame=244",
+    "eval": "npm run eval:webm && npm run eval:mp4 && npm run eval:poster",
+    "assets": "node posters.mjs list",
+    "build": "npm run hero && npm run eval"
   },
   "dependencies": {
     "@remotion/cli": "4.0.286",

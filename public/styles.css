@@ -265,6 +265,54 @@ header.nav {
 .hero-media.video-failed .media-fallback {
   display: block;
 }
+/* Below-the-fold demo videos: no autoplay attribute (main.js starts them via
+   IntersectionObserver), and reduced motion always wins over the video. */
+.hero-media.media-demo video {
+  cursor: pointer;
+}
+.hero-media.reduced-motion .media-fallback {
+  display: block;
+}
+.hero-media.reduced-motion video {
+  display: none;
+}
+
+/* Figures wrapping a .hero-media block, with a visible caption underneath —
+   the caption is the plain-text equivalent of the video, not decoration. */
+.media-figure {
+  margin-top: 44px;
+}
+.media-figure .hero-media {
+  margin: 0 auto;
+}
+.media-figure figcaption {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: var(--dim);
+  font-size: 14.5px;
+  line-height: 1.6;
+  text-align: center;
+}
+.media-figure figcaption code {
+  color: var(--accent-soft);
+}
+
+/* "New" badge next to a heading */
+.tag-new {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  color: var(--accent-soft);
+  background: rgba(124, 124, 255, 0.08);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: none;
+}
 .term-fallback .l {
   line-height: 2.1;
   opacity: 0;

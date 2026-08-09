@@ -75,7 +75,6 @@ const Row: React.FC<{
         padding: '2px 8px',
         marginLeft: -8,
         backgroundColor: active ? `${color}14` : 'transparent',
-        transition: 'background-color 0.1s',
       }}
     >
       <span

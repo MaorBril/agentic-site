@@ -6,21 +6,31 @@ publish = "public"
 # No build step needed — site is static HTML/CSS/JS
 command = ""
 
-# Cache headers for videos (long-lived, immutable hashes if needed)
+# Versioned media can be cached forever. Bump the filename when content changes.
+# (Netlify's precedence when two [[headers]] blocks match the same path is
+# undocumented, so there's no unversioned-webp rule here — every .webp in
+# public/ today is one of these versioned posters. If an unversioned .webp
+# is added later, scope its revalidate rule to exclude these prefixes rather
+# than relying on declaration order to break the tie.)
 [[headers]]
-for = "/demo.*"
+for = "/hero-context-v*.*"
 [headers.values]
 cache-control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/hero.*"
+for = "/eval-paired-v*.*"
 [headers.values]
 cache-control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/*.webp"
+for = "/*.css"
 [headers.values]
-cache-control = "public, max-age=31536000, immutable"
+cache-control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+for = "/*.js"
+[headers.values]
+cache-control = "public, max-age=0, must-revalidate"
 
 # HTML shouldn't be cached aggressively — content updates
 [[headers]]

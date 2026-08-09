@@ -6,7 +6,7 @@
     <title>agentic — Claude Code on any model, with a budget</title>
     <meta
       name="description"
-      content="agentic wraps Claude Code in a thin local router. Same TUI, same tools — but the model behind it can be Anthropic, OpenAI, xAI, or anything OpenAI-compatible. Every token metered and checked against a budget."
+      content="agentic wraps Claude Code in a thin local router. Same TUI, same tools — Anthropic runs byte-faithful passthrough, and OpenAI, xAI, and any OpenAI-compatible endpoint work through request/stream translation. Every token metered, routed by size, and checked against a budget. Sessions can now find and message each other by name."
     />
     <link rel="canonical" href="https://github.com/maorbril/agentic" />
 
@@ -20,14 +20,14 @@
       property="og:description"
       content="Same Claude Code TUI. Any model behind it. Every token metered and budgeted."
     />
-    <meta property="og:image" content="hero-poster.webp" />
+    <meta property="og:image" content="hero-context-v2-poster.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="agentic — Claude Code on any model" />
     <meta
       name="twitter:description"
       content="Same Claude Code TUI. Any model. Metered and budgeted."
     />
-    <meta name="twitter:image" content="hero-poster.webp" />
+    <meta name="twitter:image" content="hero-context-v2-poster.webp" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,8 +59,10 @@
         <a class="brand" href="#top"><span class="chev">❯</span> agentic</a>
         <nav class="nav-links">
           <a href="#features" class="hide-sm">Features</a>
+          <a href="#sessions" class="hide-sm">Sessions</a>
           <a href="#compare" class="hide-sm">Compare</a>
           <a href="#how" class="hide-sm">How it works</a>
+          <a href="#eval" class="hide-sm">Eval</a>
           <a href="#faq" class="hide-sm">FAQ</a>
           <a
             class="gh"
@@ -79,12 +81,15 @@
           <h1>Run Claude Code on any model, with a budget.</h1>
           <p class="sub">
             agentic wraps Claude Code in a thin local router. Same TUI, same
-            tools, same auto-updates — but the model behind it can be
-            Anthropic, OpenAI, xAI, or anything OpenAI-compatible. Every token
-            is metered, priced, and checked against a budget you set. Two
-            cheap classifiers watch every turn — one picks the model, the
-            other decides if the task needs a recurring loop instead of a
-            single reply.
+            tools, same auto-updates — Anthropic runs byte-faithful
+            passthrough, while OpenAI, xAI, and any OpenAI-compatible endpoint
+            (Ollama, vLLM, OpenRouter) work through full request/stream
+            translation. Every token is metered, priced, and checked against
+            a budget you set. A cheap classifier picks the model for each
+            turn, filtered by which models can actually hold the request; a
+            second, independent pass flags tasks that want a recurring loop
+            instead of a single reply. And now, sessions find and message
+            each other by name.
           </p>
 
           <div class="cta-row">
@@ -108,28 +113,39 @@
             >
           </div>
 
-          <div class="hero-media" id="hero-media">
-            <img
-              class="media-fallback"
-              src="hero-poster.webp"
-              width="1280"
-              height="720"
-              alt="agentic terminal: auto routes a rename to qwen, a plan to opus, and arms a recurring goal loop for a flaky test suite — with a live cost statusline"
-            />
-            <video
-              id="hero-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="hero-poster.webp"
-              width="1280"
-              height="720"
-            >
-              <source src="hero.webm" type="video/webm" />
-              <source src="hero.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <figure class="media-figure">
+            <div class="hero-media" id="hero-media">
+              <img
+                class="media-fallback"
+                src="hero-context-v2-poster.webp"
+                width="1280"
+                height="720"
+                alt="agentic terminal: a growing session outgrows a 32K local model, the router advances to a model that fits, and a dual gauge shows actual vs. Claude-Code-reported context converging as agentic scales the count"
+              />
+              <video
+                id="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="hero-context-v2-poster.webp"
+                width="1280"
+                height="720"
+                aria-describedby="hero-caption"
+              >
+                <source src="hero-context-v2.webm" type="video/webm" />
+                <source src="hero-context-v2.mp4" type="video/mp4" />
+                Your browser doesn't support this video. The context-aware
+                routing walkthrough is described in the caption below.
+              </video>
+            </div>
+            <figcaption id="hero-caption">
+              A candidate too small for the request is skipped, not
+              overflowed; the route settles on the smallest model that fits,
+              with <code>agentic context</code> and the live budget
+              statusline underneath.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -145,10 +161,11 @@
           <div class="features">
             <div class="card">
               <div class="idx">01</div>
-              <h3>Any provider, one CLI</h3>
+              <h3>Two dialects, every provider</h3>
               <p>
-                Anthropic passthrough is byte-faithful. OpenAI, xAI, Ollama,
-                vLLM, and OpenRouter work through request/stream translation.
+                Anthropic runs byte-faithful passthrough. Everything else —
+                OpenAI, xAI, Ollama, vLLM, OpenRouter, a local llama.cpp
+                server — works through the same request/stream translation.
                 Model names are aliases you define in
                 <code>config.yaml</code>.
               </p>
@@ -185,6 +202,43 @@
             </div>
             <div class="card">
               <div class="idx">05</div>
+              <h3>Context scaling per model</h3>
+              <p>
+                Claude Code sizes auto-compact for a ~200K Claude window.
+                Declare a model's real <code>context_window</code> (and an
+                <code>effective_context</code> below it, if the model gets
+                unreliable early) and the router scales every token count it
+                reports, so a 32K local model and a 400K one both compact at
+                the right moment — never against a window they don't have.
+              </p>
+            </div>
+            <div class="card">
+              <div class="idx">06</div>
+              <h3>Size-aware routing, before it fails</h3>
+              <p>
+                The auto-router checks a request's size against each
+                candidate model's window before picking one, so a large
+                prompt skips tiers that can't hold it instead of overflowing
+                one that can't. Anything still too large for every configured
+                model gets refused with a clear error, before it reaches a
+                provider.
+              </p>
+            </div>
+            <div class="card">
+              <div class="idx">07</div>
+              <h3>Subagents on any model</h3>
+              <p>
+                Claude Code's Agent tool is normally pinned to
+                <code>sonnet | opus | haiku | fable</code>.
+                <code>agentic agents sync</code> writes one subagent
+                definition per configured model alias, so a routed model
+                becomes selectable by name —
+                <code>subagent_type: "agentic-qwen"</code> — and its traffic
+                is priced and budgeted like anything else.
+              </p>
+            </div>
+            <div class="card">
+              <div class="idx">08</div>
               <h3>No daemon, no fork</h3>
               <p>
                 The first session binds the router port; when it exits,
@@ -193,7 +247,7 @@
               </p>
             </div>
             <div class="card">
-              <div class="idx">06</div>
+              <div class="idx">09</div>
               <h3>Profiles you switch on the fly</h3>
               <p>
                 Bundle a main model, a fast background model, and a budget
@@ -201,6 +255,77 @@
                 <code>--model grok</code> for one request.
               </p>
             </div>
+            <div class="card">
+              <div class="idx">10</div>
+              <h3>No wrapper in the launch path</h3>
+              <p>
+                Claude Code sessions now find and message each other
+                natively, so agentic dropped its own launch wrapper —
+                <code>claude</code> starts directly, one less subprocess and
+                PTY hop between you and the TUI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sessions">
+        <div class="container">
+          <h2>Find the other session by the name you'd actually say.</h2>
+          <p class="section-lead">
+            Claude Code sessions can message each other natively now — but
+            session names are auto-derived from whatever a session is doing,
+            so the name you'd say out loud is usually the project directory,
+            not the name it registered under. <code>agentic peers</code>
+            matches on both, reads Claude Code's own session registry, and
+            hands back the exact session to send to. Ties are surfaced as
+            ties: messaging the wrong project is worse than a question.
+          </p>
+
+          <div class="codeblock" aria-label="agentic peers example output">
+            <div class="bar">
+              <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
+              ><i style="background:#28c840"></i>
+            </div>
+            <pre><span class="c-com"># "the labs-service one" — matched on name and cwd</span>
+<span class="c-p">❯</span> <span class="c-cmd">agentic peers labs-service-secondlife-be</span>
+Best match for "labs-service-secondlife-be":
+  daily-case-runtime    busy  ~/code/secondlife/labs-service    started 12h ago</pre>
+          </div>
+
+          <p class="landscape-note">
+            <code>agentic setup</code> writes this workflow into
+            <code>~/.claude/CLAUDE.md</code>, so plain <code>claude</code>
+            sessions pick it up too. Sessions on a Claude Code build older
+            than 2.1.224 don't register a peer socket and stay unreachable
+            until restarted.
+          </p>
+        </div>
+      </section>
+
+      <section id="context">
+        <div class="container">
+          <h2>The gauge tracks the model, not the label.</h2>
+          <p class="section-lead">
+            Claude Code sizes auto-compact for the ~200K window it assumes.
+            agentic scales every token count it reports so a 32K local model
+            and a 400K one both compact at the moment that's actually right
+            for them — and a request too large for anything you've
+            configured is refused before it reaches a provider, not after.
+            See it in motion in the hero above; <code>agentic context</code>
+            below shows the same numbers as plain text.
+          </p>
+
+          <div class="codeblock" aria-label="agentic context example output">
+            <div class="bar">
+              <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
+              ><i style="background:#28c840"></i>
+            </div>
+            <pre><span class="c-com"># same session, two models configured</span>
+<span class="c-p">❯</span> <span class="c-cmd">agentic context sess_4f21</span>
+model        window   effective   used     reported   compact-at
+qwen-32k     32K      28K         27,940   99.8%      <span class="c-ok">✓ compacted</span>
+sonnet       200K     200K        27,940   14.0%      —</pre>
           </div>
         </div>
       </section>
@@ -256,7 +381,7 @@
                   <td>Model routing</td>
                   <td class="col-a">
                     Aliases + a built-in LLM-classifier tier router
-                    (<code>auto</code>), sticky per turn
+                    (<code>auto</code>), size-aware and sticky per turn
                   </td>
                   <td>
                     Rule-based routing configs; no classifier-based
@@ -265,7 +390,7 @@
                   <td>Manual model switch, no auto-routing</td>
                 </tr>
                 <tr>
-                  <td>Memory / cross-instance</td>
+                  <td>Memory</td>
                   <td class="col-a">
                     Composes with
                     <a
@@ -275,6 +400,15 @@
                       >clauder</a
                     >
                     — separate binary, optional
+                  </td>
+                  <td>Not their concern</td>
+                  <td>Varies</td>
+                </tr>
+                <tr>
+                  <td>Multi-session</td>
+                  <td class="col-a">
+                    <code>agentic peers</code> resolves a session by name or
+                    project directory
                   </td>
                   <td>Not their concern</td>
                   <td>Varies</td>
@@ -368,6 +502,59 @@ qwen     <span class="c-ok">$0.32</span></pre>
         </div>
       </section>
 
+      <section id="eval">
+        <div class="container">
+          <h2>
+            <span class="tag-new">New · experimental</span>
+            Paired model evals, blinded
+          </h2>
+          <p class="section-lead">
+            <code>agentic eval</code> runs a baseline model and a candidate
+            on the same coding tasks, each in its own isolated workspace, and
+            records the route and usage for both. An optional judge compares
+            the resulting patches without seeing which one is which. It's
+            new, still rough at the edges, and meant for your own coding
+            tasks or a pinned SWE-bench manifest — not yet a general
+            leaderboard tool.
+          </p>
+
+          <figure class="media-figure">
+            <div class="hero-media media-demo" id="eval-media">
+              <img
+                class="media-fallback"
+                src="eval-paired-v1-poster.webp"
+                width="1280"
+                height="720"
+                alt="agentic eval run comparing a baseline model and a candidate model on the same task: two isolated candidate runs complete, a blinded judge scores the resulting patches, and a report summarizes wins, ties, and verifier results"
+                loading="lazy"
+              />
+              <video
+                id="eval-video"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="eval-paired-v1-poster.webp"
+                width="1280"
+                height="720"
+                aria-describedby="eval-caption"
+              >
+                <source src="eval-paired-v1.webm" type="video/webm" />
+                <source src="eval-paired-v1.mp4" type="video/mp4" />
+                Your browser doesn't support this video. The eval run and
+                report are described in the caption below.
+              </video>
+            </div>
+            <figcaption id="eval-caption">
+              <code>agentic eval run</code> executes baseline and candidate in
+              separate workspaces, then <code>agentic eval report</code>
+              prints wins, ties, and verifier pass/fail for a blinded judge
+              comparison — no model identity leaks into the judge's prompt.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section>
         <div class="container">
           <h2>Plain Claude Code vs. agentic</h2>
@@ -389,7 +576,7 @@ qwen     <span class="c-ok">$0.32</span></pre>
                 <tr>
                   <td>Non-Anthropic models</td>
                   <td class="no">—</td>
-                  <td class="yes">7 providers</td>
+                  <td class="yes">OpenAI, xAI, any OpenAI-compatible endpoint</td>
                 </tr>
                 <tr>
                   <td>Per-session cost tracking</td>
@@ -437,7 +624,23 @@ qwen     <span class="c-ok">$0.32</span></pre>
                 They work through translation, but Claude Code's prompts and
                 tool patterns are tuned for Claude, so expect them to be
                 clunkier in the main loop. They're better used as cheap
-                workhorses for background tasks and subagents.
+                workhorses for background tasks and subagents. Translation
+                keeps getting more reliable — tool-call IDs from translated
+                models are sanitized so malformed ones don't corrupt a turn,
+                and a turn that reasoned on a translated model no longer
+                breaks the next turn on a native Anthropic one: unsigned
+                thinking blocks are repaired before replay instead of
+                retry-looping as "Tool use interrupted."
+              </p>
+            </details>
+            <details>
+              <summary>What's experimental right now?</summary>
+              <p>
+                <code>agentic eval</code> — paired baseline-vs-candidate
+                coding runs with an optional blinded judge. It works and
+                produces real artifacts, including a documented one-task
+                SWE-bench comparison, but it's new, the interface can still
+                change, and one task is a smoke test, not a model ranking.
               </p>
             </details>
             <details>
@@ -512,7 +715,7 @@ qwen     <span class="c-ok">$0.32</span></pre>
       </div>
     </footer>
 
-    <div class="toast" id="toast">Copied</div>
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
 
     <script src="main.js" defer></script>
   </body>

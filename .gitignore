@@ -4,6 +4,7 @@ remotion/out/
 remotion/.remotion/
 
 # Agent/tool-installed skill state, not project source
+.claude/
 remotion/.agents/
 remotion/.claude/
 
