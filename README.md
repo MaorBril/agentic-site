@@ -4,33 +4,39 @@ The landing page for [agentic](https://github.com/maorbril/agentic), the
 multi-model, cost-controlled harness that wraps Claude Code.
 
 Static HTML/CSS/JS (zero build step) plus a [Remotion](https://remotion.dev)
-project that renders the animated hero video.
+project that renders two product animations.
 
 ```
 agentic-site/
-├── public/              ← the site (deploy this folder as-is)
+├── public/                       ← the site (deploy this folder as-is)
 │   ├── index.html
 │   ├── styles.css
 │   ├── main.js
-│   ├── hero.webm        ← rendered hero video (VP9)
-│   ├── hero.mp4         ← rendered hero video (H.264 fallback)
-│   ├── hero-poster.webp ← poster / LCP image
+│   ├── hero-context-v2.webm      ← context-routing hero (VP9)
+│   ├── hero-context-v2.mp4       ← context-routing hero (H.264)
+│   ├── hero-context-v2-poster.webp
+│   ├── eval-paired-v1.webm       ← paired-eval animation (VP9)
+│   ├── eval-paired-v1.mp4        ← paired-eval animation (H.264)
+│   ├── eval-paired-v1-poster.webp
 │   ├── robots.txt
 │   └── sitemap.xml
-└── remotion/            ← source for the hero video (not deployed)
+└── remotion/                     ← video source (not deployed)
+    ├── posters.mjs                ← single source of truth for poster frames
     ├── src/
-    │   ├── Root.tsx         ← composition (renders SceneDemo as Hero)
-    │   ├── theme.ts         ← shared design tokens (mirror of styles.css)
-    │   ├── anim.tsx         ← Typewriter / FadeUp helpers
+    │   ├── Root.tsx              ← HeroContext and EvalPaired compositions
+    │   ├── theme.ts              ← video design tokens
+    │   ├── anim.tsx              ← frame-driven animation helpers
+    │   ├── components/           ← shared primitives (TerminalPanel, Chrome, Track)
     │   └── scenes/
-    │       └── SceneDemo.tsx ← the hero scene: auto-routing demo
+    │       ├── HeroContext.tsx
+    │       └── EvalPaired.tsx
     └── package.json
 ```
 
 ## Preview the site locally
 
-Use a static file server that supports HTTP Range requests — the hero
-video needs `206 Partial Content` to autoplay in Chrome, and
+Use a static file server that supports HTTP Range requests. The videos
+need `206 Partial Content` to autoplay in Chrome, and
 `python3 -m http.server` always returns `200` with the full file, which
 makes the video silently fail to autoplay there. From the repo root:
 
@@ -47,22 +53,32 @@ npm install
 npm run studio        # interactive Remotion Studio preview
 ```
 
-## Re-render the hero video
+## Render the videos
 
-After editing the scene, re-render and copy the artifacts into `public/`:
+The output filenames are versioned because Netlify caches versioned media for a
+year. Bump the filename when an animation changes, then update both the render
+scripts and `public/index.html` in the same change.
 
 ```bash
 cd remotion
-npm run render:webm   # → out/hero.webm  (VP9, crf 18)
-npm run render:mp4    # → out/hero.mp4   (H.264, crf 18)
-npm run still         # → out/poster.png (frame 280 = statusline)
+npm run build
 
-# then refresh the site's copies:
-cp out/hero.webm out/hero.mp4 ../public/
-cwebp -q 82 out/poster.png -o ../public/hero-poster.webp
+# copy encoded video files
+cp out/hero-context-v2.webm out/hero-context-v2.mp4 ../public/
+cp out/eval-paired-v1.webm out/eval-paired-v1.mp4 ../public/
+
+# convert lossless stills to small browser posters
+cwebp -q 82 out/hero-context-v2-poster.png \
+  -o ../public/hero-context-v2-poster.webp
+cwebp -q 82 out/eval-paired-v1-poster.png \
+  -o ../public/eval-paired-v1-poster.webp
 ```
 
-(`npm run build` runs all three renders in one go.)
+The individual `hero:webm` / `hero:mp4` / `hero:poster` and `eval:webm` /
+`eval:mp4` / `eval:poster` scripts are useful while iterating. Their frame
+numbers are the intentional poster holds for each composition — `posters.mjs`
+is the single source of truth for those frame numbers (run `npm run assets`
+to list them); keep it aligned with the scene timelines.
 
 ## Deploy
 
