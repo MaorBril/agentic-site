@@ -60,6 +60,7 @@
         <nav class="nav-links">
           <a href="#features" class="hide-sm">Features</a>
           <a href="#sessions" class="hide-sm">Sessions</a>
+          <a href="#tasks" class="hide-sm">Task routing</a>
           <a href="#compare" class="hide-sm">Compare</a>
           <a href="#how" class="hide-sm">How it works</a>
           <a href="#eval" class="hide-sm">Eval</a>
@@ -193,11 +194,13 @@
               <h3>Two classifiers watch every turn</h3>
               <p>
                 <code>--model auto</code> sends planning to a big model and
-                mechanical edits to a cheap one, sticky for the whole turn. A
-                second pass, Auto Goal, flags tasks that need a recurring
-                check-in — a flaky test, a long build — and nudges Claude
-                Code toward <code>ScheduleWakeup</code> or <code>/loop</code>
-                instead of a single reply.
+                mechanical edits to a cheap one, sticky for the whole turn.
+                The same classifier call can also name a task specialist —
+                see <a href="#tasks">task routing</a> below. A second,
+                independent pass, Auto Goal, flags tasks that need a
+                recurring check-in — a flaky test, a long build — and
+                nudges Claude Code toward <code>ScheduleWakeup</code> or
+                <code>/loop</code> instead of a single reply.
               </p>
             </div>
             <div class="card">
@@ -381,7 +384,8 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
                   <td>Model routing</td>
                   <td class="col-a">
                     Aliases + a built-in LLM-classifier tier router
-                    (<code>auto</code>), size-aware and sticky per turn
+                    (<code>auto</code>), size-aware and sticky per turn,
+                    with optional per-task specialist overrides
                   </td>
                   <td>
                     Rule-based routing configs; no classifier-based
@@ -499,6 +503,57 @@ sonnet   <span class="c-ok">$1.12</span>
 qwen     <span class="c-ok">$0.32</span></pre>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="tasks">
+        <div class="container">
+          <h2>Same tier, different specialist.</h2>
+          <p class="section-lead">
+            Tiering alone can't say that ordinary implementation work and
+            architecture review need comparable capability but do better on
+            different models. An optional <code>tasks:</code> map adds that
+            second dimension on top of tiering, from a fixed label set:
+            <code>implementation</code>, <code>sql_data</code>,
+            <code>debugging</code>, <code>code_review</code>,
+            <code>architecture</code>, <code>security_review</code>,
+            <code>critical_review</code>. The classifier's one call per turn
+            returns both the tier and, if configured, the task — no extra
+            classifier request, just a fraction of a cent depending on
+            classifier and prompt.
+          </p>
+
+          <div class="codeblock" aria-label="agentic task routing example">
+            <div class="bar">
+              <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
+              ><i style="background:#28c840"></i>
+            </div>
+            <pre><span class="c-com"># tier router, plus specialists for two labels</span>
+<span class="c-p">❯</span> <span class="c-cmd">agentic routing set auto --classifier haiku \
+    --deep opus --standard sonnet --light qwen \
+    --task implementation=grok --task security_review=fable</span>
+
+<span class="c-com"># later calls merge into this rule; --task label= removes one</span>
+<span class="c-p">❯</span> <span class="c-cmd">agentic routing list</span>
+ALIAS  CLASSIFIER  DEEP  STANDARD  LIGHT  TASKS
+auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=fable
+
+<span class="c-com"># tier and model disagree — the task override is what moved it</span>
+<span class="c-p">❯</span> <span class="c-cmd">grep autoroute ~/.agentic/router.log</span>
+... tier=standard model=grok  reason=task:implementation
+... tier=deep     model=fable reason=task:security_review</pre>
+          </div>
+
+          <p class="landscape-note">
+            A task label only wins if its model fits the request's context
+            and size budget; otherwise the request stays on the classified
+            tier's own model. The label set is fixed, not customizable, and
+            this is a model-selection hint, not a security boundary —
+            naming <code>security_review</code> picks a model, it doesn't
+            enforce a review policy. Pinned sessions
+            (<code>pin_tiers</code> / <code>X-Agentic-Pin-Model</code>)
+            bypass task routing the same way they bypass tiering.
+          </p>
         </div>
       </section>
 
