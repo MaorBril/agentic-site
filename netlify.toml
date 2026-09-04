@@ -37,3 +37,8 @@ cache-control = "public, max-age=0, must-revalidate"
 for = "/"
 [headers.values]
 cache-control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+for = "/compare/*"
+[headers.values]
+cache-control = "public, max-age=0, must-revalidate"

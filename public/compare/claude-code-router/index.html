@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>agentic vs claude-code-router — an honest comparison</title>
+    <meta
+      name="description"
+      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose."
+    />
+    <link
+      rel="canonical"
+      href="https://runagentic.dev/compare/claude-code-router/"
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://runagentic.dev/compare/claude-code-router/"
+    />
+    <meta
+      property="og:title"
+      content="agentic vs claude-code-router — an honest comparison"
+    />
+    <meta
+      property="og:description"
+      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose."
+    />
+    <meta
+      property="og:image"
+      content="https://runagentic.dev/hero-context-v2-poster.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MaorBril" />
+    <meta
+      name="twitter:title"
+      content="agentic vs claude-code-router — an honest comparison"
+    />
+    <meta
+      name="twitter:description"
+      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing."
+    />
+    <meta
+      name="twitter:image"
+      content="https://runagentic.dev/hero-context-v2-poster.webp"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;640&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%237c7cff'>❯</text></svg>"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "agentic vs claude-code-router — an honest comparison",
+        "url": "https://runagentic.dev/compare/claude-code-router/",
+        "description": "Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "agentic",
+          "url": "https://runagentic.dev/"
+        },
+        "about": [
+          { "@type": "SoftwareApplication", "name": "agentic" },
+          { "@type": "SoftwareApplication", "name": "claude-code-router" }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="/"><span class="chev">❯</span> agentic</a>
+        <nav class="nav-links">
+          <a href="/#features" class="hide-sm">Features</a>
+          <a href="/#sessions" class="hide-sm">Sessions</a>
+          <a href="/#tasks" class="hide-sm">Task routing</a>
+          <a href="/#compare" class="hide-sm">Compare</a>
+          <a href="/#how" class="hide-sm">How it works</a>
+          <a href="/#eval" class="hide-sm">Eval</a>
+          <a href="/#faq" class="hide-sm">FAQ</a>
+          <a
+            class="gh"
+            href="https://github.com/maorbril/agentic"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero page-hero">
+        <div class="container">
+          <p class="crumb">
+            <a href="/">agentic</a>
+            <span aria-hidden="true"> / </span>
+            compare
+          </p>
+          <h1>agentic vs claude-code-router</h1>
+          <p class="sub">
+            claude-code-router (CCR) is the most popular way to point Claude
+            Code at other models, and for good reason: it is a capable control
+            plane with a big plugin ecosystem. agentic solves the same core
+            problem for a different person. This page is the honest version of
+            who should pick which.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="container pick-grid">
+          <div class="pick">
+            <h2>Pick CCR if</h2>
+            <ul>
+              <li>
+                You want one control plane for several agents and tools, not
+                just Claude Code.
+              </li>
+              <li>
+                You are comfortable running and administering a long-lived
+                router process.
+              </li>
+              <li>You want its plugin and transformer ecosystem.</li>
+            </ul>
+          </div>
+          <div class="pick pick-a">
+            <h2>Pick agentic if</h2>
+            <ul>
+              <li>
+                You want Claude Code exactly as Anthropic ships it, unmodified
+                and auto-updating, with nothing to operate. agentic is a static
+                Go binary; the first session binds the port, the last one out
+                turns off the lights.
+              </li>
+              <li>
+                You want spend control that cannot be talked past: every token
+                priced as it happens, and daily, weekly, or monthly budgets that
+                refuse the next request instead of warning after the fact.
+              </li>
+              <li>
+                You want a classifier to pick the cheapest model that fits each
+                turn, size-checked against each model's real context window
+                before the request goes out.
+              </li>
+              <li>
+                You want <code>agentic cost</code> to answer "where did today's
+                $4.31 go" without a dashboard.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="side-by-side">
+        <div class="container">
+          <h2>Side by side</h2>
+          <p class="section-lead">
+            Same four rows as the homepage table — harness, how it runs, cost
+            and budgets, model routing — with the other columns dropped so CCR
+            and agentic can be read against each other.
+          </p>
+
+          <div class="landscape">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="col-a">agentic</th>
+                  <th>claude-code-router</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Harness</td>
+                  <td class="col-a">
+                    Real Claude Code, unmodified, auto-updating
+                  </td>
+                  <td>Real Claude Code, unmodified</td>
+                </tr>
+                <tr>
+                  <td>Runs as</td>
+                  <td class="col-a">
+                    Static Go binary, no daemon (leader election over a fixed
+                    port)
+                  </td>
+                  <td>Daemon / server process you deploy and administer</td>
+                </tr>
+                <tr>
+                  <td>Cost &amp; budgets</td>
+                  <td class="col-a">
+                    First-class CLI: <code>agentic cost</code>, live statusline,
+                    hard-stop daily / weekly / monthly budgets
+                  </td>
+                  <td>Usually a dashboard or not built in</td>
+                </tr>
+                <tr>
+                  <td>Model routing</td>
+                  <td class="col-a">
+                    Aliases + a built-in LLM-classifier tier router
+                    (<code>auto</code>), size-aware and sticky per turn, with
+                    optional per-task specialist overrides
+                  </td>
+                  <td>
+                    Rule-based routing configs; no classifier-based tiering
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>The honest catch</h2>
+          <p class="section-lead catch">
+            CCR is older, bigger, and battle-tested by far more users. agentic
+            is newer and built for one developer's machine, not a team. If you
+            run a team gateway, LiteLLM or CCR is the right layer today. If you
+            are one developer who wants <code>claude</code>, unmodified, with a
+            budget and a cheap-model escape hatch, agentic installs in one
+            command and has nothing to administer.
+          </p>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="container">
+          <h2>One command to a tracked session.</h2>
+          <div class="cta-row">
+            <div class="install">
+              <span class="dollar">$</span>
+              <code
+                >curl -fsSL
+                https://raw.githubusercontent.com/maorbril/agentic/main/install.sh
+                | sh</code
+              >
+              <button class="copy-btn2" aria-label="Copy install command">
+                copy
+              </button>
+            </div>
+            <a
+              class="btn-secondary"
+              href="https://github.com/maorbril/agentic"
+              target="_blank"
+              rel="noopener"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot-inner">
+        <div>
+          <span class="brand"><span class="chev">❯</span> agentic</span> · MIT
+          License
+        </div>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a
+            href="https://github.com/maorbril/agentic"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a
+            href="https://github.com/maorbril/agentic#readme"
+            target="_blank"
+            rel="noopener"
+            >Docs</a
+          >
+          <a
+            href="https://github.com/maorbril/agentic/releases"
+            target="_blank"
+            rel="noopener"
+            >Releases</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+    <script src="../../main.js" defer></script>
+  </body>
+</html>
