@@ -654,6 +654,96 @@ header.nav {
   padding: 0 0 16px;
 }
 
+/* ---------- inner pages (compare, etc.) ---------- */
+.page-hero {
+  text-align: left;
+  padding: 56px 0 48px;
+}
+.page-hero h1 {
+  max-width: 36ch;
+  margin: 0;
+  text-align: left;
+  font-size: clamp(32px, 5vw, 48px);
+}
+.page-hero p.sub {
+  margin: 20px 0 0;
+  max-width: 62ch;
+  text-align: left;
+}
+.crumb {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+.crumb a {
+  color: var(--dim);
+}
+.crumb a:hover {
+  color: var(--text);
+}
+
+.pick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+@media (max-width: 760px) {
+  .pick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.pick {
+  background: var(--panel);
+  padding: 32px 28px;
+}
+.pick h2 {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+.pick-a {
+  background: rgba(124, 124, 255, 0.05);
+}
+.pick ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pick li {
+  color: var(--dim);
+  font-size: 15px;
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.55;
+}
+.pick li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--faint);
+  font-family: var(--mono);
+}
+.pick-a li::before {
+  color: var(--accent);
+}
+.pick code {
+  color: var(--accent-soft);
+  font-size: 13.5px;
+}
+
+.catch {
+  max-width: 68ch;
+}
+.catch code {
+  color: var(--accent-soft);
+}
+
 /* ---------- final CTA ---------- */
 .final {
   text-align: center;
