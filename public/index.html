@@ -8,26 +8,34 @@
       name="description"
       content="agentic wraps Claude Code in a thin local router. Same TUI, same tools — Anthropic runs byte-faithful passthrough, and OpenAI, xAI, and any OpenAI-compatible endpoint work through request/stream translation. Every token metered, routed by size, and checked against a budget. Sessions can now find and message each other by name."
     />
-    <link rel="canonical" href="https://github.com/maorbril/agentic" />
+    <link rel="canonical" href="https://runagentic.dev/" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://runagentic.dev/" />
     <meta
       property="og:title"
       content="agentic — Claude Code on any model, with a budget"
     />
     <meta
       property="og:description"
-      content="Same Claude Code TUI. Any model behind it. Every token metered and budgeted."
+      content="Run Claude Code on Anthropic, OpenAI, xAI, Ollama, or any OpenAI-compatible endpoint. Every token priced. Hard daily, weekly, and monthly budget stops."
     />
-    <meta property="og:image" content="hero-context-v2-poster.webp" />
+    <meta
+      property="og:image"
+      content="https://runagentic.dev/hero-context-v2-poster.webp"
+    />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MaorBril" />
     <meta name="twitter:title" content="agentic — Claude Code on any model" />
     <meta
       name="twitter:description"
-      content="Same Claude Code TUI. Any model. Metered and budgeted."
+      content="Every token priced. Hard budget stops. The cheapest model that fits each turn. Claude Code stays unmodified."
     />
-    <meta name="twitter:image" content="hero-context-v2-poster.webp" />
+    <meta
+      name="twitter:image"
+      content="https://runagentic.dev/hero-context-v2-poster.webp"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,10 +54,13 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "agentic",
+        "url": "https://runagentic.dev/",
         "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "macOS, Linux, Windows",
-        "description": "Run Claude Code on any model, with a budget. A thin local router that meters every token and enforces spend caps.",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        "operatingSystem": "macOS, Linux",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Run Claude Code on any model, with a budget. Multi-provider router, cost tracking, and hard spend caps for Claude Code.",
+        "codeRepository": "https://github.com/maorbril/agentic",
+        "license": "https://opensource.org/licenses/MIT"
       }
     </script>
   </head>
