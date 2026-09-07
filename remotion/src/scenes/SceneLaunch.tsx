@@ -4,7 +4,7 @@ import { TerminalWindow } from '../Terminal';
 import { Typewriter, FadeUp } from '../anim';
 import { theme } from '../theme';
 
-/** Scene 1: `agentic` launches Claude Code, router picks a model. */
+/** Scene 1: `gremlord` launches Claude Code, router picks a model. */
 export const SceneLaunch: React.FC = () => {
   const frame = useCurrentFrame();
   const showSpinner = frame >= 56 && frame < 72;
@@ -12,10 +12,10 @@ export const SceneLaunch: React.FC = () => {
   const spinnerChar = spinnerFrames[Math.floor(frame / 2) % spinnerFrames.length];
 
   return (
-    <TerminalWindow title="agentic — Claude Code, on any model">
+    <TerminalWindow title="gremlord — Claude Code, on any model">
       <div style={{ display: 'flex', gap: 12, fontSize: 24, lineHeight: 1.7 }}>
         <span style={{ color: theme.accent }}>❯</span>
-        <Typewriter text="agentic" startFrame={4} duration={16} />
+        <Typewriter text="gremlord" startFrame={4} duration={16} />
       </div>
 
       <FadeUp at={30} style={{ marginTop: 22 }}>

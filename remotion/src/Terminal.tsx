@@ -7,7 +7,7 @@ export const TerminalWindow: React.FC<{
   title?: string;
   children: React.ReactNode;
   scale?: number;
-}> = ({ title = 'agentic', children, scale = 1 }) => {
+}> = ({ title = 'gremlord', children, scale = 1 }) => {
   return (
     <AbsoluteFill
       style={{

@@ -41,7 +41,7 @@ export const SceneBrand: React.FC = () => {
           letterSpacing: -2,
         }}
       >
-        <span style={{ color: theme.accent }}>❯</span> agentic
+        <span style={{ color: theme.accent }}>❯</span> gremlord
       </div>
 
       <div
@@ -72,7 +72,7 @@ export const SceneBrand: React.FC = () => {
           gap: 10,
         }}
       >
-        <span>curl -fsSL raw.githubusercontent.com/maorbril/agentic/main/install.sh | sh</span>
+        <span>curl -fsSL raw.githubusercontent.com/maorbril/gremlord/main/install.sh | sh</span>
         {frame > 34 && (
           <span
             style={{

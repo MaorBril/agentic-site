@@ -3,47 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>agentic vs claude-code-router — an honest comparison</title>
+    <title>gremlord vs claude-code-router — an honest comparison</title>
     <meta
       name="description"
-      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose."
+      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; gremlord is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose."
     />
     <link
       rel="canonical"
-      href="https://runagentic.dev/compare/claude-code-router/"
+      href="https://gremlord.com/compare/claude-code-router/"
     />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://runagentic.dev/compare/claude-code-router/"
+      content="https://gremlord.com/compare/claude-code-router/"
     />
     <meta
       property="og:title"
-      content="agentic vs claude-code-router — an honest comparison"
+      content="gremlord vs claude-code-router — an honest comparison"
     />
     <meta
       property="og:description"
-      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose."
+      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; gremlord is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose."
     />
     <meta
       property="og:image"
-      content="https://runagentic.dev/hero-context-v2-poster.webp"
+      content="https://gremlord.com/hero-context-v2-poster.webp"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@MaorBril" />
     <meta
       name="twitter:title"
-      content="agentic vs claude-code-router — an honest comparison"
+      content="gremlord vs claude-code-router — an honest comparison"
     />
     <meta
       name="twitter:description"
-      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing."
+      content="Both run Claude Code on other models. claude-code-router is a feature-rich control plane; gremlord is a no-daemon binary with hard budget stops and classifier routing."
     />
     <meta
       name="twitter:image"
-      content="https://runagentic.dev/hero-context-v2-poster.webp"
+      content="https://gremlord.com/hero-context-v2-poster.webp"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,16 +62,16 @@
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "agentic vs claude-code-router — an honest comparison",
-        "url": "https://runagentic.dev/compare/claude-code-router/",
-        "description": "Both run Claude Code on other models. claude-code-router is a feature-rich control plane; agentic is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose.",
+        "name": "gremlord vs claude-code-router — an honest comparison",
+        "url": "https://gremlord.com/compare/claude-code-router/",
+        "description": "Both run Claude Code on other models. claude-code-router is a feature-rich control plane; gremlord is a no-daemon binary with hard budget stops and classifier routing. Here is how to choose.",
         "isPartOf": {
           "@type": "WebSite",
-          "name": "agentic",
-          "url": "https://runagentic.dev/"
+          "name": "gremlord",
+          "url": "https://gremlord.com/"
         },
         "about": [
-          { "@type": "SoftwareApplication", "name": "agentic" },
+          { "@type": "SoftwareApplication", "name": "gremlord" },
           { "@type": "SoftwareApplication", "name": "claude-code-router" }
         ]
       }
@@ -80,7 +80,7 @@
   <body>
     <header class="nav">
       <div class="container nav-inner">
-        <a class="brand" href="/"><span class="chev">❯</span> agentic</a>
+        <a class="brand" href="/"><span class="chev">❯</span> gremlord</a>
         <nav class="nav-links">
           <a href="/#features" class="hide-sm">Features</a>
           <a href="/#sessions" class="hide-sm">Sessions</a>
@@ -91,7 +91,7 @@
           <a href="/#faq" class="hide-sm">FAQ</a>
           <a
             class="gh"
-            href="https://github.com/maorbril/agentic"
+            href="https://github.com/gremlord/gremlord"
             target="_blank"
             rel="noopener"
             >GitHub</a
@@ -104,15 +104,15 @@
       <section class="hero page-hero">
         <div class="container">
           <p class="crumb">
-            <a href="/">agentic</a>
+            <a href="/">gremlord</a>
             <span aria-hidden="true"> / </span>
             compare
           </p>
-          <h1>agentic vs claude-code-router</h1>
+          <h1>gremlord vs claude-code-router</h1>
           <p class="sub">
             claude-code-router (CCR) is the most popular way to point Claude
             Code at other models, and for good reason: it is a capable control
-            plane with a big plugin ecosystem. agentic solves the same core
+            plane with a big plugin ecosystem. gremlord solves the same core
             problem for a different person. This page is the honest version of
             who should pick which.
           </p>
@@ -136,11 +136,11 @@
             </ul>
           </div>
           <div class="pick pick-a">
-            <h2>Pick agentic if</h2>
+            <h2>Pick gremlord if</h2>
             <ul>
               <li>
                 You want Claude Code exactly as Anthropic ships it, unmodified
-                and auto-updating, with nothing to operate. agentic is a static
+                and auto-updating, with nothing to operate. gremlord is a static
                 Go binary; the first session binds the port, the last one out
                 turns off the lights.
               </li>
@@ -155,7 +155,7 @@
                 before the request goes out.
               </li>
               <li>
-                You want <code>agentic cost</code> to answer "where did today's
+                You want <code>gremlord cost</code> to answer "where did today's
                 $4.31 go" without a dashboard.
               </li>
             </ul>
@@ -169,7 +169,7 @@
           <p class="section-lead">
             Same four rows as the homepage table — harness, how it runs, cost
             and budgets, model routing — with the other columns dropped so CCR
-            and agentic can be read against each other.
+            and gremlord can be read against each other.
           </p>
 
           <div class="landscape">
@@ -177,7 +177,7 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th class="col-a">agentic</th>
+                  <th class="col-a">gremlord</th>
                   <th>claude-code-router</th>
                 </tr>
               </thead>
@@ -200,7 +200,7 @@
                 <tr>
                   <td>Cost &amp; budgets</td>
                   <td class="col-a">
-                    First-class CLI: <code>agentic cost</code>, live statusline,
+                    First-class CLI: <code>gremlord cost</code>, live statusline,
                     hard-stop daily / weekly / monthly budgets
                   </td>
                   <td>Usually a dashboard or not built in</td>
@@ -226,11 +226,11 @@
         <div class="container">
           <h2>The honest catch</h2>
           <p class="section-lead catch">
-            CCR is older, bigger, and battle-tested by far more users. agentic
+            CCR is older, bigger, and battle-tested by far more users. gremlord
             is newer and built for one developer's machine, not a team. If you
             run a team gateway, LiteLLM or CCR is the right layer today. If you
             are one developer who wants <code>claude</code>, unmodified, with a
-            budget and a cheap-model escape hatch, agentic installs in one
+            budget and a cheap-model escape hatch, gremlord installs in one
             command and has nothing to administer.
           </p>
         </div>
@@ -244,7 +244,7 @@
               <span class="dollar">$</span>
               <code
                 >curl -fsSL
-                https://raw.githubusercontent.com/maorbril/agentic/main/install.sh
+                https://raw.githubusercontent.com/gremlord/gremlord/main/install.sh
                 | sh</code
               >
               <button class="copy-btn2" aria-label="Copy install command">
@@ -253,7 +253,7 @@
             </div>
             <a
               class="btn-secondary"
-              href="https://github.com/maorbril/agentic"
+              href="https://github.com/gremlord/gremlord"
               target="_blank"
               rel="noopener"
               >GitHub →</a
@@ -266,25 +266,25 @@
     <footer>
       <div class="container foot-inner">
         <div>
-          <span class="brand"><span class="chev">❯</span> agentic</span> · MIT
+          <span class="brand"><span class="chev">❯</span> gremlord</span> · MIT
           License
         </div>
         <div class="foot-links">
           <a href="/">Home</a>
           <a
-            href="https://github.com/maorbril/agentic"
+            href="https://github.com/gremlord/gremlord"
             target="_blank"
             rel="noopener"
             >GitHub</a
           >
           <a
-            href="https://github.com/maorbril/agentic#readme"
+            href="https://github.com/gremlord/gremlord#readme"
             target="_blank"
             rel="noopener"
             >Docs</a
           >
           <a
-            href="https://github.com/maorbril/agentic/releases"
+            href="https://github.com/gremlord/gremlord/releases"
             target="_blank"
             rel="noopener"
             >Releases</a

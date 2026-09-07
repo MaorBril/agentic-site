@@ -26,7 +26,7 @@ import { Legend, Track, TrackAxis } from '../components/Track';
  *           actual as scaling engages; compaction threshold marked
  *  370–460  route settles on the smallest fitting model, then the
  *           prompt-too-long guard as a brief counterexample
- *  460–600  `agentic context <session-id>` output with the compaction marker
+ *  460–600  `gremlord context <session-id>` output with the compaction marker
  */
 
 export const HERO_CONTEXT_DURATION = 600;
@@ -82,7 +82,7 @@ export const HeroContext: React.FC = () => {
 
   return (
     <TerminalPanel
-      title={`claude — agentic · session ${SESSION} · model auto`}
+      title={`claude — gremlord · session ${SESSION} · model auto`}
       caption={<HeroCaption />}
       captionAt={60}
       footer={
@@ -166,7 +166,7 @@ export const HeroContext: React.FC = () => {
       </Sequence>
 
       <Sequence
-        name="Phase D · agentic context output"
+        name="Phase D · gremlord context output"
         from={PHASE_D}
         durationInFrames={HERO_CONTEXT_DURATION - PHASE_D}
         layout="none"
@@ -564,7 +564,7 @@ const GuardBlock: React.FC = () => {
             lineHeight: 1.7,
           }}
         >
-          agentic: request too large for model{' '}
+          gremlord: request too large for model{' '}
           <span style={{ color: theme.text }}>&quot;{SMALL_MODEL}&quot;</span>{' '}
           context budget (estimated {EST_INPUT.toLocaleString('en-US')} + reserved
           output exceeds budget {(32768).toLocaleString('en-US')}); reduce the
@@ -576,7 +576,7 @@ const GuardBlock: React.FC = () => {
 };
 
 // ---------------------------------------------------------------------------
-// Phase D — `agentic context <session-id>`.
+// Phase D — `gremlord context <session-id>`.
 // ---------------------------------------------------------------------------
 
 type CtxRow = {
@@ -595,7 +595,7 @@ const PhaseContextCmd: React.FC = () => (
   <Phase dur={HERO_CONTEXT_DURATION - PHASE_D} marginTop={18}>
     <PromptLine>
       <Typewriter
-        text={`agentic context ${SESSION}`}
+        text={`gremlord context ${SESSION}`}
         startFrame={2}
         duration={26}
         hideCaretAfter={34}
@@ -752,7 +752,7 @@ const HeroCaption: React.FC = () => {
   if (frame >= PHASE_D) {
     text = (
       <>
-        <span style={{ color: theme.text }}>agentic context</span> shows what the
+        <span style={{ color: theme.text }}>gremlord context</span> shows what the
         model really held, per request.
       </>
     );

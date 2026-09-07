@@ -20,11 +20,11 @@ import { ResultLines, Spinner, Tag } from '../components/Chrome';
  * win rate or a general model ranking.
  *
  * Timeline (30fps, 390 frames = 13s):
- *    0– 60  window in, `agentic eval run` types, experimental badge
+ *    0– 60  window in, `gremlord eval run` types, experimental badge
  *   60–190  two anonymized lanes step through identical stages
  *  190–250  blinded judge reads both scrubbed result sets
  *  250–300  preference, then alias reveal with the n=1 caveat
- *  300–420  `agentic eval report` with cost / tokens / latency telemetry
+ *  300–420  `gremlord eval report` with cost / tokens / latency telemetry
  */
 
 export const EVAL_PAIRED_DURATION = 420;
@@ -42,14 +42,14 @@ const REPORT_AT = 300;
 export const EvalPaired: React.FC = () => {
   return (
     <TerminalPanel
-      title="agentic eval — paired, blinded model comparison"
+      title="gremlord eval — paired, blinded model comparison"
       caption={<EvalCaption />}
       captionAt={40}
       height={604}
     >
       <PromptLine>
         <Typewriter
-          text="agentic eval run swebench-smoke.yaml --judge sonnet"
+          text="gremlord eval run swebench-smoke.yaml --judge sonnet"
           startFrame={8}
           duration={40}
           hideCaretAfter={56}
@@ -411,7 +411,7 @@ const ReportBlock: React.FC = () => {
     >
       <PromptLine>
         <Typewriter
-          text="agentic eval report out/swebench-smoke"
+          text="gremlord eval report out/swebench-smoke"
           startFrame={2}
           duration={26}
           hideCaretAfter={34}
@@ -543,7 +543,7 @@ const EvalCaption: React.FC = () => {
   if (frame >= REPORT_AT) {
     return (
       <>
-        <span style={{ color: theme.text }}>agentic eval report</span> — cost,
+        <span style={{ color: theme.text }}>gremlord eval report</span> — cost,
         tokens and latency per arm.
       </>
     );

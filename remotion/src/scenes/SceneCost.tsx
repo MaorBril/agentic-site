@@ -4,7 +4,7 @@ import { TerminalWindow } from '../Terminal';
 import { Typewriter, FadeUp } from '../anim';
 import { theme } from '../theme';
 
-/** Scene 3: `agentic cost` — where did today's spend go. */
+/** Scene 3: `gremlord cost` — where did today's spend go. */
 export const SceneCost: React.FC = () => {
   const frame = useCurrentFrame();
   const total = interpolate(frame, [40, 66], [0, 4.31], {
@@ -17,10 +17,10 @@ export const SceneCost: React.FC = () => {
   const pulse = 0.4 + 0.6 * Math.abs(Math.sin(frame / 10));
 
   return (
-    <TerminalWindow title="agentic cost">
+    <TerminalWindow title="gremlord cost">
       <div style={{ display: 'flex', gap: 12, fontSize: 24, lineHeight: 1.7 }}>
         <span style={{ color: theme.accent }}>❯</span>
-        <Typewriter text="agentic cost --by model" startFrame={4} duration={22} />
+        <Typewriter text="gremlord cost --by model" startFrame={4} duration={22} />
       </div>
 
       <FadeUp at={36} style={{ marginTop: 24 }}>

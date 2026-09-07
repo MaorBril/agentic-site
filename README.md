@@ -1,13 +1,13 @@
-# agentic — marketing site
+# gremlord — marketing site
 
-The landing page for [agentic](https://github.com/maorbril/agentic), the
+The landing page for [gremlord](https://github.com/gremlord/gremlord), the
 multi-model, cost-controlled harness that wraps Claude Code.
 
 Static HTML/CSS/JS (zero build step) plus a [Remotion](https://remotion.dev)
 project that renders two product animations.
 
 ```
-agentic-site/
+gremlord-site/
 ├── public/                       ← the site (deploy this folder as-is)
 │   ├── index.html
 │   ├── styles.css

@@ -104,7 +104,7 @@ export const ResultLines: React.FC<{
 };
 
 /**
- * The product statusline, matching `agentic statusline`:
+ * The product statusline, matching `gremlord statusline`:
  *   main · auto→opus (deep) · sess $0.84 · day $4.31/$25 [██░░░░]
  * The budget bar attaches directly to the day figure with no separator, the
  * same invariant the CLI enforces.

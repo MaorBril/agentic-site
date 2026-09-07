@@ -1,9 +1,9 @@
-// agentic marketing site — minimal progressive enhancement.
+// gremlord marketing site — minimal progressive enhancement.
 (function () {
   'use strict';
 
   var INSTALL =
-    'curl -fsSL https://raw.githubusercontent.com/maorbril/agentic/main/install.sh | sh';
+    'curl -fsSL https://raw.githubusercontent.com/gremlord/gremlord/main/install.sh | sh';
 
   var prefersReducedMotion =
     window.matchMedia &&

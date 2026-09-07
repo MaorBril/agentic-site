@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>agentic — Claude Code on any model, with a budget</title>
+    <title>gremlord — Claude Code on any model, with a budget</title>
     <meta
       name="description"
-      content="agentic wraps Claude Code in a thin local router. Same TUI, same tools — Anthropic runs byte-faithful passthrough, and OpenAI, xAI, and any OpenAI-compatible endpoint work through request/stream translation. Every token metered, routed by size, and checked against a budget. Sessions can now find and message each other by name."
+      content="gremlord wraps Claude Code in a thin local router. Same TUI, same tools — Anthropic runs byte-faithful passthrough, and OpenAI, xAI, and any OpenAI-compatible endpoint work through request/stream translation. Every token metered, routed by size, and checked against a budget. Sessions can now find and message each other by name."
     />
-    <link rel="canonical" href="https://runagentic.dev/" />
+    <link rel="canonical" href="https://gremlord.com/" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://runagentic.dev/" />
+    <meta property="og:url" content="https://gremlord.com/" />
     <meta
       property="og:title"
-      content="agentic — Claude Code on any model, with a budget"
+      content="gremlord — Claude Code on any model, with a budget"
     />
     <meta
       property="og:description"
@@ -23,18 +23,18 @@
     />
     <meta
       property="og:image"
-      content="https://runagentic.dev/hero-context-v2-poster.webp"
+      content="https://gremlord.com/hero-context-v2-poster.webp"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@MaorBril" />
-    <meta name="twitter:title" content="agentic — Claude Code on any model" />
+    <meta name="twitter:title" content="gremlord — Claude Code on any model" />
     <meta
       name="twitter:description"
       content="Every token priced. Hard budget stops. The cheapest model that fits each turn. Claude Code stays unmodified."
     />
     <meta
       name="twitter:image"
-      content="https://runagentic.dev/hero-context-v2-poster.webp"
+      content="https://gremlord.com/hero-context-v2-poster.webp"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,13 +53,13 @@
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "agentic",
-        "url": "https://runagentic.dev/",
+        "name": "gremlord",
+        "url": "https://gremlord.com/",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "macOS, Linux",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Run Claude Code on any model, with a budget. Multi-provider router, cost tracking, and hard spend caps for Claude Code.",
-        "codeRepository": "https://github.com/maorbril/agentic",
+        "codeRepository": "https://github.com/gremlord/gremlord",
         "license": "https://opensource.org/licenses/MIT"
       }
     </script>
@@ -67,7 +67,7 @@
   <body>
     <header class="nav">
       <div class="container nav-inner">
-        <a class="brand" href="#top"><span class="chev">❯</span> agentic</a>
+        <a class="brand" href="#top"><span class="chev">❯</span> gremlord</a>
         <nav class="nav-links">
           <a href="#features" class="hide-sm">Features</a>
           <a href="#sessions" class="hide-sm">Sessions</a>
@@ -78,7 +78,7 @@
           <a href="#faq" class="hide-sm">FAQ</a>
           <a
             class="gh"
-            href="https://github.com/maorbril/agentic"
+            href="https://github.com/gremlord/gremlord"
             target="_blank"
             rel="noopener"
             >GitHub</a
@@ -92,7 +92,7 @@
         <div class="container">
           <h1>Run Claude Code on any model, with a budget.</h1>
           <p class="sub">
-            agentic wraps Claude Code in a thin local router. Same TUI, same
+            gremlord wraps Claude Code in a thin local router. Same TUI, same
             tools, same auto-updates — Anthropic runs byte-faithful
             passthrough, while OpenAI, xAI, and any OpenAI-compatible endpoint
             (Ollama, vLLM, OpenRouter) work through full request/stream
@@ -109,7 +109,7 @@
               <span class="dollar">$</span>
               <code id="install-cmd"
                 >curl -fsSL
-                https://raw.githubusercontent.com/maorbril/agentic/main/install.sh
+                https://raw.githubusercontent.com/gremlord/gremlord/main/install.sh
                 | sh</code
               >
               <button id="copy-btn" aria-label="Copy install command">
@@ -118,7 +118,7 @@
             </div>
             <a
               class="btn-secondary"
-              href="https://github.com/maorbril/agentic"
+              href="https://github.com/gremlord/gremlord"
               target="_blank"
               rel="noopener"
               >README →</a
@@ -132,7 +132,7 @@
                 src="hero-context-v2-poster.webp"
                 width="1280"
                 height="720"
-                alt="agentic terminal: a growing session outgrows a 32K local model, the router advances to a model that fits, and a dual gauge shows actual vs. Claude-Code-reported context converging as agentic scales the count"
+                alt="gremlord terminal: a growing session outgrows a 32K local model, the router advances to a model that fits, and a dual gauge shows actual vs. Claude-Code-reported context converging as gremlord scales the count"
               />
               <video
                 id="hero-video"
@@ -154,7 +154,7 @@
             <figcaption id="hero-caption">
               A candidate too small for the request is skipped, not
               overflowed; the route settles on the smallest model that fits,
-              with <code>agentic context</code> and the live budget
+              with <code>gremlord context</code> and the live budget
               statusline underneath.
             </figcaption>
           </figure>
@@ -187,7 +187,7 @@
               <h3>Every token priced</h3>
               <p>
                 A local SQLite log prices every request as it happens.
-                <code>agentic cost --by model</code> breaks spend down by
+                <code>gremlord cost --by model</code> breaks spend down by
                 model, profile, or session.
               </p>
             </div>
@@ -244,10 +244,10 @@
               <p>
                 Claude Code's Agent tool is normally pinned to
                 <code>sonnet | opus | haiku | fable</code>.
-                <code>agentic agents sync</code> writes one subagent
+                <code>gremlord agents sync</code> writes one subagent
                 definition per configured model alias, so a routed model
                 becomes selectable by name —
-                <code>subagent_type: "agentic-qwen"</code> — and its traffic
+                <code>subagent_type: "gremlord-qwen"</code> — and its traffic
                 is priced and budgeted like anything else.
               </p>
             </div>
@@ -274,7 +274,7 @@
               <h3>No wrapper in the launch path</h3>
               <p>
                 Claude Code sessions now find and message each other
-                natively, so agentic dropped its own launch wrapper —
+                natively, so gremlord dropped its own launch wrapper —
                 <code>claude</code> starts directly, one less subprocess and
                 PTY hop between you and the TUI.
               </p>
@@ -290,25 +290,25 @@
             Claude Code sessions can message each other natively now — but
             session names are auto-derived from whatever a session is doing,
             so the name you'd say out loud is usually the project directory,
-            not the name it registered under. <code>agentic peers</code>
+            not the name it registered under. <code>gremlord peers</code>
             matches on both, reads Claude Code's own session registry, and
             hands back the exact session to send to. Ties are surfaced as
             ties: messaging the wrong project is worse than a question.
           </p>
 
-          <div class="codeblock" aria-label="agentic peers example output">
+          <div class="codeblock" aria-label="gremlord peers example output">
             <div class="bar">
               <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
               ><i style="background:#28c840"></i>
             </div>
             <pre><span class="c-com"># "the labs-service one" — matched on name and cwd</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic peers labs-service-secondlife-be</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord peers labs-service-secondlife-be</span>
 Best match for "labs-service-secondlife-be":
   daily-case-runtime    busy  ~/code/secondlife/labs-service    started 12h ago</pre>
           </div>
 
           <p class="landscape-note">
-            <code>agentic setup</code> writes this workflow into
+            <code>gremlord setup</code> writes this workflow into
             <code>~/.claude/CLAUDE.md</code>, so plain <code>claude</code>
             sessions pick it up too. Sessions on a Claude Code build older
             than 2.1.224 don't register a peer socket and stay unreachable
@@ -322,21 +322,21 @@ Best match for "labs-service-secondlife-be":
           <h2>The gauge tracks the model, not the label.</h2>
           <p class="section-lead">
             Claude Code sizes auto-compact for the ~200K window it assumes.
-            agentic scales every token count it reports so a 32K local model
+            gremlord scales every token count it reports so a 32K local model
             and a 400K one both compact at the moment that's actually right
             for them — and a request too large for anything you've
             configured is refused before it reaches a provider, not after.
-            See it in motion in the hero above; <code>agentic context</code>
+            See it in motion in the hero above; <code>gremlord context</code>
             below shows the same numbers as plain text.
           </p>
 
-          <div class="codeblock" aria-label="agentic context example output">
+          <div class="codeblock" aria-label="gremlord context example output">
             <div class="bar">
               <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
               ><i style="background:#28c840"></i>
             </div>
             <pre><span class="c-com"># same session, two models configured</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic context sess_4f21</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord context sess_4f21</span>
 model        window   effective   used     reported   compact-at
 qwen-32k     32K      28K         27,940   99.8%      <span class="c-ok">✓ compacted</span>
 sonnet       200K     200K        27,940   14.0%      —</pre>
@@ -348,7 +348,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
         <div class="container">
           <h2>Three ways to get Claude Code off one provider.</h2>
           <p class="section-lead">
-            agentic isn't the only answer to "I want Claude Code but not
+            gremlord isn't the only answer to "I want Claude Code but not
             locked to Anthropic." Here's how the options actually differ.
           </p>
 
@@ -357,7 +357,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
               <thead>
                 <tr>
                   <th></th>
-                  <th class="col-a">agentic</th>
+                  <th class="col-a">gremlord</th>
                   <th>claude-code-router · proxy forks · LiteLLM</th>
                   <th>OpenCode, Crush, Goose, Aider</th>
                 </tr>
@@ -385,7 +385,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
                 <tr>
                   <td>Cost &amp; budgets</td>
                   <td class="col-a">
-                    First-class CLI: <code>agentic cost</code>, live
+                    First-class CLI: <code>gremlord cost</code>, live
                     statusline, hard-stop daily / weekly / monthly budgets
                   </td>
                   <td>Usually a dashboard (LiteLLM) or not built in</td>
@@ -422,7 +422,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
                 <tr>
                   <td>Multi-session</td>
                   <td class="col-a">
-                    <code>agentic peers</code> resolves a session by name or
+                    <code>gremlord peers</code> resolves a session by name or
                     project directory
                   </td>
                   <td>Not their concern</td>
@@ -433,15 +433,15 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
           </div>
 
           <p class="landscape-note">
-            agentic doesn't try to be a better harness than Claude Code — it
+            gremlord doesn't try to be a better harness than Claude Code — it
             keeps Claude Code exactly as Anthropic ships it and only swaps
             what's behind <code>ANTHROPIC_BASE_URL</code>. Want a different
             agent loop entirely? OpenCode, Crush, Goose, and Aider are the
             right layer to look at. Want a gateway you deploy and administer
             for a team? LiteLLM is more mature for that. Choosing between
-            agentic and
+            gremlord and
             <a href="/compare/claude-code-router/">claude-code-router</a>?
-            There's a longer, honest comparison. agentic is for one developer
+            There's a longer, honest comparison. gremlord is for one developer
             who wants <code>claude</code>, unmodified, with a budget and a
             cheap-model escape hatch — installed in one command, with nothing
             to operate.
@@ -454,7 +454,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
           <h2>A gateway, plus the CLI around it.</h2>
           <p class="section-lead">
             Claude Code already supports pointing at a gateway via
-            <code>ANTHROPIC_BASE_URL</code>. agentic is that gateway — it
+            <code>ANTHROPIC_BASE_URL</code>. gremlord is that gateway — it
             never touches Claude Code's source.
           </p>
 
@@ -466,7 +466,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
                   <h4>Install</h4>
                   <p>
                     One command drops the binary in
-                    <code>~/.local/bin</code>. <code>agentic setup</code>
+                    <code>~/.local/bin</code>. <code>gremlord setup</code>
                     writes a config, registers the statusline, and offers to
                     install anything missing.
                   </p>
@@ -475,7 +475,7 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
               <div class="step">
                 <div class="n">2</div>
                 <div>
-                  <h4>Run <code>agentic</code></h4>
+                  <h4>Run <code>gremlord</code></h4>
                   <p>
                     It starts the local router, points Claude Code at it via
                     <code>ANTHROPIC_BASE_URL</code>, and hands you the exact
@@ -502,16 +502,16 @@ sonnet       200K     200K        27,940   14.0%      —</pre>
                 ><i style="background:#28c840"></i>
               </div>
               <pre><span class="c-com"># default profile, tracked</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord</span>
 
 <span class="c-com"># same session, cheaper models</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic -p cheap</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord -p cheap</span>
 
 <span class="c-com"># one-off model override</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic --model grok</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord --model grok</span>
 
 <span class="c-com"># where did today's $4.31 go?</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic cost --by model</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord cost --by model</span>
 opus     <span class="c-ok">$2.87</span>
 sonnet   <span class="c-ok">$1.12</span>
 qwen     <span class="c-ok">$0.32</span></pre>
@@ -537,23 +537,23 @@ qwen     <span class="c-ok">$0.32</span></pre>
             classifier and prompt.
           </p>
 
-          <div class="codeblock" aria-label="agentic task routing example">
+          <div class="codeblock" aria-label="gremlord task routing example">
             <div class="bar">
               <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
               ><i style="background:#28c840"></i>
             </div>
             <pre><span class="c-com"># tier router, plus specialists for two labels</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic routing set auto --classifier haiku \
+<span class="c-p">❯</span> <span class="c-cmd">gremlord routing set auto --classifier haiku \
     --deep opus --standard sonnet --light qwen \
     --task implementation=grok --task security_review=fable</span>
 
 <span class="c-com"># later calls merge into this rule; --task label= removes one</span>
-<span class="c-p">❯</span> <span class="c-cmd">agentic routing list</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord routing list</span>
 ALIAS  CLASSIFIER  DEEP  STANDARD  LIGHT  TASKS
 auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=fable
 
 <span class="c-com"># tier and model disagree — the task override is what moved it</span>
-<span class="c-p">❯</span> <span class="c-cmd">grep autoroute ~/.agentic/router.log</span>
+<span class="c-p">❯</span> <span class="c-cmd">grep autoroute ~/.gremlord/router.log</span>
 ... tier=standard model=grok  reason=task:implementation
 ... tier=deep     model=fable reason=task:security_review</pre>
           </div>
@@ -565,7 +565,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
             this is a model-selection hint, not a security boundary —
             naming <code>security_review</code> picks a model, it doesn't
             enforce a review policy. Pinned sessions
-            (<code>pin_tiers</code> / <code>X-Agentic-Pin-Model</code>)
+            (<code>pin_tiers</code> / <code>X-Gremlord-Pin-Model</code>)
             bypass task routing the same way they bypass tiering.
           </p>
         </div>
@@ -578,7 +578,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
             Paired model evals, blinded
           </h2>
           <p class="section-lead">
-            <code>agentic eval</code> runs a baseline model and a candidate
+            <code>gremlord eval</code> runs a baseline model and a candidate
             on the same coding tasks, each in its own isolated workspace, and
             records the route and usage for both. An optional judge compares
             the resulting patches without seeing which one is which. It's
@@ -594,7 +594,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
                 src="eval-paired-v1-poster.webp"
                 width="1280"
                 height="720"
-                alt="agentic eval run comparing a baseline model and a candidate model on the same task: two isolated candidate runs complete, a blinded judge scores the resulting patches, and a report summarizes wins, ties, and verifier results"
+                alt="gremlord eval run comparing a baseline model and a candidate model on the same task: two isolated candidate runs complete, a blinded judge scores the resulting patches, and a report summarizes wins, ties, and verifier results"
                 loading="lazy"
               />
               <video
@@ -615,8 +615,8 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
               </video>
             </div>
             <figcaption id="eval-caption">
-              <code>agentic eval run</code> executes baseline and candidate in
-              separate workspaces, then <code>agentic eval report</code>
+              <code>gremlord eval run</code> executes baseline and candidate in
+              separate workspaces, then <code>gremlord eval report</code>
               prints wins, ties, and verifier pass/fail for a blinded judge
               comparison — no model identity leaks into the judge's prompt.
             </figcaption>
@@ -626,14 +626,14 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
 
       <section>
         <div class="container">
-          <h2>Plain Claude Code vs. agentic</h2>
+          <h2>Plain Claude Code vs. gremlord</h2>
           <div class="cmp">
             <table>
               <thead>
                 <tr>
                   <th></th>
                   <th>Plain Claude Code</th>
-                  <th class="col-a">agentic</th>
+                  <th class="col-a">gremlord</th>
                 </tr>
               </thead>
               <tbody>
@@ -705,7 +705,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
             <details>
               <summary>What's experimental right now?</summary>
               <p>
-                <code>agentic eval</code> — paired baseline-vs-candidate
+                <code>gremlord eval</code> — paired baseline-vs-candidate
                 coding runs with an optional blinded judge. It works and
                 produces real artifacts, including a documented one-task
                 SWE-bench comparison, but it's new, the interface can still
@@ -715,7 +715,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
             <details>
               <summary>Is Claude Code modified?</summary>
               <p>
-                No. agentic launches the unmodified, auto-updating
+                No. gremlord launches the unmodified, auto-updating
                 <code>claude</code> binary and points it at the local router
                 via <code>ANTHROPIC_BASE_URL</code> — an officially supported
                 gateway hook.
@@ -726,15 +726,15 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
               <p>
                 The router binds <code>127.0.0.1</code> only and requires a
                 per-install token (mode 0600), so other local processes can't
-                spend on your keys. Keys live in <code>~/.agentic/env</code>,
+                spend on your keys. Keys live in <code>~/.gremlord/env</code>,
                 never in the config file.
               </p>
             </details>
             <details>
-              <summary>What does agentic itself cost?</summary>
+              <summary>What does gremlord itself cost?</summary>
               <p>
                 Nothing — it's MIT-licensed. You pay your model providers for
-                the tokens you use, which is exactly what agentic measures and
+                the tokens you use, which is exactly what gremlord measures and
                 caps.
               </p>
             </details>
@@ -750,7 +750,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
               <span class="dollar">$</span>
               <code
                 >curl -fsSL
-                https://raw.githubusercontent.com/maorbril/agentic/main/install.sh
+                https://raw.githubusercontent.com/gremlord/gremlord/main/install.sh
                 | sh</code
               >
               <button class="copy-btn2" aria-label="Copy install command">
@@ -759,7 +759,7 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
             </div>
             <a
               class="btn-secondary"
-              href="https://github.com/maorbril/agentic"
+              href="https://github.com/gremlord/gremlord"
               target="_blank"
               rel="noopener"
               >GitHub →</a
@@ -772,13 +772,13 @@ auto   haiku       opus  sonnet    qwen   implementation=grok, security_review=f
     <footer>
       <div class="container foot-inner">
         <div>
-          <span class="brand"><span class="chev">❯</span> agentic</span> ·
+          <span class="brand"><span class="chev">❯</span> gremlord</span> ·
           MIT License
         </div>
         <div class="foot-links">
-          <a href="https://github.com/maorbril/agentic" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://github.com/maorbril/agentic#readme" target="_blank" rel="noopener">Docs</a>
-          <a href="https://github.com/maorbril/agentic/releases" target="_blank" rel="noopener">Releases</a>
+          <a href="https://github.com/gremlord/gremlord" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/gremlord/gremlord#readme" target="_blank" rel="noopener">Docs</a>
+          <a href="https://github.com/gremlord/gremlord/releases" target="_blank" rel="noopener">Releases</a>
           <a href="/compare/claude-code-router/">vs CCR</a>
           <a href="https://github.com/MaorBril/clauder" target="_blank" rel="noopener">clauder</a>
         </div>
