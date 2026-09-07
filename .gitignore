@@ -3,6 +3,10 @@ remotion/node_modules/
 remotion/out/
 remotion/.remotion/
 
+# Raw I2V generation output — large intermediate render; the final encoded
+# assets it was cut down into live in public/ (see i2v/PROMPT.md)
+i2v/*.mp4
+
 # Agent/tool-installed skill state, not project source
 .claude/
 remotion/.agents/
