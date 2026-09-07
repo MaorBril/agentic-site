@@ -143,6 +143,58 @@ header.nav {
   padding: 76px 0 64px;
   text-align: center;
 }
+/* ASCII brand mark — the crowned brain-gremlin + GREMLORD wordmark from the
+   README. Sized in viewport units so the fixed-width art never overflows a
+   phone; pre blocks keep their own left-aligned grid inside a centered box. */
+.brand-mark {
+  margin: 0 auto 26px;
+  font-family: var(--mono);
+  overflow: hidden;
+}
+.brand-mark pre {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: left;
+}
+.mark-gremlin {
+  font-size: clamp(5.5px, 1.55vw, 10px);
+  line-height: 1.25;
+  color: var(--dim);
+}
+/* Animated gremlin — an I2V clip generated from the ASCII art above (roar,
+   then calmly files an expense report). Reuses the .hero-media/.media-fallback
+   hooks main.js already wires up for autoplay/reduced-motion/error handling,
+   but strips their bordered-screenshot chrome: the render's own #0a0a0b
+   background matches the page exactly, so it floats free like the ASCII art
+   it replaces instead of sitting in a panel. The <pre> fallback (shown only
+   for prefers-reduced-motion or a failed video load) keeps its normal sizing
+   from .brand-mark pre above — only the inherited height:100% needs undoing
+   so it doesn't get stretched to fill the video box. */
+.brand-mark .brand-video {
+  margin: 0 auto;
+  width: min(94vw, 640px);
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+.brand-mark .media-fallback {
+  height: auto;
+}
+.brand-mark .mark-wordmark {
+  margin-top: 14px;
+  font-size: clamp(5px, 1.45vw, 9.5px);
+  line-height: 1.08;
+  color: var(--accent);
+  text-shadow: 0 0 26px rgba(124, 124, 255, 0.35);
+}
+.mark-tagline {
+  margin: 0 auto 40px;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+}
 .hero h1 {
   font-size: clamp(34px, 5.6vw, 58px);
   font-weight: 640;
