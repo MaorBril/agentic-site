@@ -18,10 +18,10 @@ export const SceneRouting: React.FC = () => {
   const cycle = Math.floor(Math.max(0, frame - 86) / 24) % ROWS.length;
 
   return (
-    <TerminalWindow title="agentic — dynamic routing">
+    <TerminalWindow title="gremlord — dynamic routing">
       <div style={{ display: 'flex', gap: 12, fontSize: 24, lineHeight: 1.7 }}>
         <span style={{ color: theme.accent }}>❯</span>
-        <Typewriter text="agentic --model auto" startFrame={4} duration={22} />
+        <Typewriter text="gremlord --model auto" startFrame={4} duration={22} />
       </div>
 
       <FadeUp at={32} style={{ marginTop: 22 }}>

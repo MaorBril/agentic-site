@@ -1,4 +1,4 @@
-# Netlify build config for agentic-site
+# Netlify build config for gremlord-site
 
 [build]
 # Publish the 'public' folder, not the repo root

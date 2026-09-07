@@ -1,8 +1,8 @@
 {
-  "name": "agentic-site-remotion",
+  "name": "gremlord-site-remotion",
   "version": "1.0.0",
   "private": true,
-  "description": "Remotion project that renders the agentic hero demo video.",
+  "description": "Remotion project that renders the gremlord hero demo video.",
   "scripts": {
     "studio": "remotion studio",
     "typecheck": "tsc --noEmit",

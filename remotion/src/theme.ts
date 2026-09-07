@@ -1,4 +1,4 @@
-// Shared design tokens for the agentic hero video. Keep in sync with the
+// Shared design tokens for the gremlord hero video. Keep in sync with the
 // site's CSS custom properties in ../../public/styles.css.
 export const theme = {
   bg: '#0a0a0b',
@@ -7,7 +7,7 @@ export const theme = {
   text: '#e7e7ea',
   dim: '#8a8a93',
   faint: '#5a5a63',
-  accent: '#7c7cff', // agentic violet
+  accent: '#7c7cff', // gremlord violet
   accentSoft: '#a9a9ff',
   // Status colors are RESERVED for pass / warning / error and must always be
   // paired with a word or icon — never used as the sole encoding.
