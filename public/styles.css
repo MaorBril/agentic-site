@@ -500,6 +500,8 @@ header.nav {
 }
 .step code {
   color: var(--accent-soft);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* code block */
@@ -860,6 +862,7 @@ footer {
   flex-direction: column;
   gap: 18px;
   max-width: 720px;
+  width: 100%;
   counter-reset: rule;
 }
 .rules li {
@@ -870,6 +873,8 @@ footer {
   color: var(--dim);
   font-size: 15px;
   line-height: 1.6;
+  width: 100%;
+  min-width: 0;
 }
 .rules li::before {
   content: counter(rule);
@@ -887,20 +892,37 @@ footer {
 }
 .rules code {
   color: var(--accent-soft);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.rules a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .rules li > div {
   flex: 1;
   min-width: 0;
+  overflow-wrap: anywhere;
+}
+.rules li > div p {
+  margin: 12px 0 0;
+  color: var(--dim);
 }
 .rules .tier-table {
   margin: 16px 0 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 .rules .tier-table table {
-  min-width: 0;
+  min-width: 480px;
 }
 .rules .tier-table th,
 .rules .tier-table td {
   white-space: normal;
+}
+.landscape {
+  -webkit-overflow-scrolling: touch;
 }
 .landscape .example-row td {
   color: var(--faint);
