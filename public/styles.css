@@ -735,6 +735,10 @@ header.nav {
 .crumb a:hover {
   color: var(--text);
 }
+.page-hero .cta-row {
+  justify-content: flex-start;
+  margin-top: 28px;
+}
 
 .pick-grid {
   display: grid;
@@ -847,6 +851,46 @@ footer {
 .toast.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- challenge page ---------- */
+.rules {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 720px;
+  counter-reset: rule;
+}
+.rules li {
+  list-style: none;
+  counter-increment: rule;
+  display: flex;
+  gap: 16px;
+  color: var(--dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.rules li::before {
+  content: counter(rule);
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--accent-soft);
+  font-family: var(--mono);
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+}
+.rules code {
+  color: var(--accent-soft);
+}
+.landscape .example-row td {
+  color: var(--faint);
+  font-style: italic;
 }
 
 @media (prefers-reduced-motion: reduce) {
