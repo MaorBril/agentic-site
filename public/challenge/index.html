@@ -109,32 +109,49 @@
           <h2>Rules</h2>
           <ol class="rules">
             <li>
-              Set your cap before you start:
-              <code>gremlord budget set --daily 25</code>.
+              <div>
+                Set your cap before you start:
+                <code>gremlord budget set --daily 25</code>. That is a
+                daily cap, so it does not by itself keep a multi-day build
+                under $25. The contest total is all-time: paste
+                <code>gremlord cost --receipt</code> (every session,
+                summed) and that number plus any local hardware cost (rule
+                5) must be ≤ $25.00.
+                <code>--session &lt;id&gt;</code> is optional extra
+                evidence, not a substitute for the all-time receipt.
+              </div>
             </li>
             <li>
-              Build anything real: a tool, a fix, a feature, a demo.
-              Vibe-coding your landing page doesn't count — it has to do
-              something.
+              <div>
+                Build anything real: a tool, a fix, a feature, a demo. The
+                entry must perform a function beyond presenting itself.
+              </div>
             </li>
             <li>
-              Enter by replying to the pinned
-              <a
-                href="https://github.com/gremlord/gremlord/discussions/29"
-                target="_blank"
-                rel="noopener"
-                >"The $25 Challenge" discussion</a
-              >
-              with: what you built (one paragraph), a link to the repo or
-              demo, and your <code>gremlord cost --receipt</code> output
-              pasted in full as the receipt.
+              <div>
+                Enter by replying to the pinned
+                <a
+                  href="https://github.com/gremlord/gremlord/discussions/29"
+                  target="_blank"
+                  rel="noopener"
+                  >"The $25 Challenge" discussion</a
+                >
+                with: what you built (one paragraph), a link to the repo
+                or demo, and your <code>gremlord cost --receipt</code>
+                output pasted in full as the receipt.
+              </div>
             </li>
             <li>
-              Used a passthrough profile or subscription-billed CLI
-              delegation (Codex/Grok under your own ChatGPT/SuperGrok login)
-              for any part of the build? Those runs show $0 or don't appear
-              in <code>gremlord cost</code> at all. Disclose it in your
-              entry — it doesn't disqualify you, but judges factor it in.
+              <div>
+                Used a passthrough profile or subscription-billed CLI
+                delegation (Codex/Grok under your own ChatGPT/SuperGrok
+                login) for any part of the build? Those runs show $0 or
+                don't appear in <code>gremlord cost</code> at all. Disclose
+                it in your entry. Unpriced subscription work is
+                <strong>recognition-only</strong> — it cannot win the $25
+                bounty unless you assign it a fixed rate and include that
+                rate in the contest total.
+              </div>
             </li>
             <li>
               <div>
@@ -142,7 +159,13 @@
                 don't have a metered API price either, so
                 <code>gremlord cost</code> won't show real spend for them.
                 Price them by fixed hardware rate × active runtime instead,
-                and add it to your tracked total:
+                and add it to your tracked total.
+                <p>
+                  Active runtime is from request start / model load
+                  through the final token. Sum every run. Round each run
+                  up to one minute. Rates assume 3-year hardware life at
+                  50% use and $0.20/kWh.
+                </p>
                 <div class="landscape tier-table">
                   <table>
                     <thead>
@@ -189,10 +212,17 @@
                 runtime counts toward the $25 cap.
               </div>
             </li>
-            <li>Honor system on receipts. A faked log to win a README mention is a sad life.</li>
             <li>
-              One entry per person. Entries close 7 days after the
-              announcement post.
+              <div>
+                Honor system on receipts. A faked log to win a README
+                mention is a sad life.
+              </div>
+            </li>
+            <li>
+              <div>
+                One entry per person. Entries close
+                <strong>September 17, 2026 23:59:59 UTC</strong>.
+              </div>
             </li>
           </ol>
         </div>
@@ -233,11 +263,11 @@
               <div class="step">
                 <div class="n">3</div>
                 <div>
-                  <h4>Print your receipt</h4>
+                  <h4>Print your all-time receipt</h4>
                   <p>
-                    <code>gremlord cost --receipt</code> — add
-                    <code>--session &lt;id&gt;</code> if it wasn't the
-                    latest.
+                    Build, then print your all-time receipt:
+                    <code>gremlord cost --receipt</code>. That number plus
+                    local hardware cost must be ≤ $25.00.
                   </p>
                 </div>
               </div>
@@ -255,8 +285,9 @@
                     >
                     with your build, that receipt pasted in full, a
                     disclosure line for any passthrough/subscription CLI
-                    delegation, and your hardware tier + active runtime
-                    for any local models.
+                    delegation (and a rate if you want it to count), and
+                    your hardware tier + active runtime for any local
+                    models.
                   </p>
                 </div>
               </div>
@@ -274,9 +305,8 @@
 <span class="c-com"># cap it at $25/day</span>
 <span class="c-p">❯</span> <span class="c-cmd">gremlord budget set --daily 25</span>
 
-<span class="c-com"># your receipt — paste this in full</span>
-<span class="c-p">❯</span> <span class="c-cmd">gremlord cost --receipt</span>
-<span class="c-com"># add --session &lt;id&gt; if it wasn't the latest</span></pre>
+<span class="c-com"># all-time receipt — paste this in full</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord cost --receipt</span></pre>
             </div>
           </div>
         </div>
@@ -289,7 +319,7 @@
             <div class="pick">
               <h2>Community pick</h2>
               <ul>
-                <li>Most thumbs-up on the discussion entry when the window closes.</li>
+                <li>Most thumbs-up on the discussion entry at cutoff. Founder breaks ties.</li>
                 <li>Recognition only — permanent leaderboard + README slot.</li>
               </ul>
             </div>
@@ -305,7 +335,12 @@
                     >@MaorBril</a
                   >.
                 </li>
-                <li>Wins a <strong>$25 bounty</strong>, plus a permanent leaderboard + README slot.</li>
+                <li>
+                  Wins a <strong>$25 bounty</strong>, plus a permanent
+                  leaderboard + README slot. Unpriced
+                  subscription-billed work (rule 4) is recognition-only
+                  and cannot take the bounty.
+                </li>
               </ul>
             </div>
           </div>
@@ -337,8 +372,10 @@
           </div>
 
           <p class="landscape-note">
-            Entries close <strong>September 17, 2026</strong>
-            (7 days after <a
+            Entries close
+            <strong>September 17, 2026 23:59:59 UTC</strong>
+            (7 days after
+            <a
               href="https://github.com/gremlord/gremlord/discussions/29"
               target="_blank"
               rel="noopener"
