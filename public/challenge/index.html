@@ -113,12 +113,15 @@
                 Set your cap before you start:
                 <code>gremlord budget set --daily 25</code>. That is a
                 daily cap, so it does not by itself keep a multi-day build
-                under $25. The contest total is all-time: paste
-                <code>gremlord cost --receipt</code> (every session,
-                summed) and that number plus any local hardware cost (rule
-                5) must be ≤ $25.00.
-                <code>--session &lt;id&gt;</code> is optional extra
-                evidence, not a substitute for the all-time receipt.
+                under $25. The contest receipt is
+                <code>gremlord cost --receipt --since YYYY-MM-DD</code>
+                from the day you started the build — the
+                <code>from</code>/<code>to</code> lines on the paste are
+                the window. That number plus any local hardware cost (rule
+                5) must be ≤ $25.00. Bare
+                <code>gremlord cost --receipt</code> (no
+                <code>--since</code>) is today's spend, not the contest
+                total, and a lifetime dump is not an entry.
               </div>
             </li>
             <li>
@@ -137,7 +140,8 @@
                   >"The $25 Challenge" discussion</a
                 >
                 with: what you built (one paragraph), a link to the repo
-                or demo, and your <code>gremlord cost --receipt</code>
+                or demo, and your
+                <code>gremlord cost --receipt --since YYYY-MM-DD</code>
                 output pasted in full as the receipt.
               </div>
             </li>
@@ -263,11 +267,12 @@
               <div class="step">
                 <div class="n">3</div>
                 <div>
-                  <h4>Print your all-time receipt</h4>
+                  <h4>Print your receipt</h4>
                   <p>
-                    Build, then print your all-time receipt:
-                    <code>gremlord cost --receipt</code>. That number plus
-                    local hardware cost must be ≤ $25.00.
+                    Build, then print your receipt from the day you
+                    started:
+                    <code>gremlord cost --receipt --since YYYY-MM-DD</code>.
+                    That number plus local hardware cost must be ≤ $25.00.
                   </p>
                 </div>
               </div>
@@ -305,8 +310,8 @@
 <span class="c-com"># cap it at $25/day</span>
 <span class="c-p">❯</span> <span class="c-cmd">gremlord budget set --daily 25</span>
 
-<span class="c-com"># all-time receipt — paste this in full</span>
-<span class="c-p">❯</span> <span class="c-cmd">gremlord cost --receipt</span></pre>
+<span class="c-com"># receipt from the day you started — paste this in full</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord cost --receipt --since YYYY-MM-DD</span></pre>
             </div>
           </div>
         </div>
