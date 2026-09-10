@@ -888,6 +888,20 @@ footer {
 .rules code {
   color: var(--accent-soft);
 }
+.rules li > div {
+  flex: 1;
+  min-width: 0;
+}
+.rules .tier-table {
+  margin: 16px 0 12px;
+}
+.rules .tier-table table {
+  min-width: 0;
+}
+.rules .tier-table th,
+.rules .tier-table td {
+  white-space: normal;
+}
 .landscape .example-row td {
   color: var(--faint);
   font-style: italic;
