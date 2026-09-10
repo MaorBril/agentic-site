@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The gremlord $25 Challenge</title>
+    <meta
+      name="description"
+      content="Build something real with Claude Code running through gremlord, on any model, for $25.00 or less — proven by your gremlord cost log. Founder's pick wins a $25 bounty; both winners get a permanent leaderboard and README slot."
+    />
+    <link rel="canonical" href="https://gremlord.com/challenge/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gremlord.com/challenge/" />
+    <meta property="og:title" content="The gremlord $25 Challenge" />
+    <meta
+      property="og:description"
+      content="What can an agent build when the meter stops at $25? Build anything real with Claude Code through gremlord, on any model, for $25 or less — enter on GitHub."
+    />
+    <meta property="og:image" content="https://gremlord.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MaorBril" />
+    <meta name="twitter:title" content="The gremlord $25 Challenge" />
+    <meta
+      name="twitter:description"
+      content="What can an agent build when the meter stops at $25? Build anything real with Claude Code through gremlord, on any model, for $25 or less — enter on GitHub."
+    />
+    <meta name="twitter:image" content="https://gremlord.com/og.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;640&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%237c7cff'>❯</text></svg>"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "The gremlord $25 Challenge",
+        "url": "https://gremlord.com/challenge/",
+        "description": "Build something real with Claude Code running through gremlord, on any model, for $25.00 or less, proven by a gremlord cost log.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "gremlord",
+          "url": "https://gremlord.com/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="/"><span class="chev">❯</span> gremlord</a>
+        <nav class="nav-links">
+          <a href="/#features" class="hide-sm">Features</a>
+          <a href="/#sessions" class="hide-sm">Sessions</a>
+          <a href="/#tasks" class="hide-sm">Task routing</a>
+          <a href="/#compare" class="hide-sm">Compare</a>
+          <a href="/#how" class="hide-sm">How it works</a>
+          <a href="/#eval" class="hide-sm">Eval</a>
+          <a href="/#faq" class="hide-sm">FAQ</a>
+          <a
+            class="gh"
+            href="https://github.com/gremlord/gremlord"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero page-hero">
+        <div class="container">
+          <p class="crumb">
+            <a href="/">gremlord</a>
+            <span aria-hidden="true"> / </span>
+            challenge
+          </p>
+          <h1>The $25 Challenge</h1>
+          <p class="sub">
+            What can an agent build when the meter stops at $25?
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn-secondary"
+              href="https://github.com/gremlord/gremlord/discussions/29"
+              target="_blank"
+              rel="noopener"
+              >Enter on GitHub →</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="rules">
+        <div class="container">
+          <h2>Rules</h2>
+          <ol class="rules">
+            <li>
+              Set your cap before you start:
+              <code>gremlord budget set --daily 25</code>.
+            </li>
+            <li>
+              Build anything real — a tool, a fix, a feature, a demo.
+              Vibe-coding your landing page doesn't count — it has to do
+              something.
+            </li>
+            <li>
+              Enter by replying to the pinned
+              <a
+                href="https://github.com/gremlord/gremlord/discussions/29"
+                target="_blank"
+                rel="noopener"
+                >"The $25 Challenge" discussion</a
+              >
+              with: what you built (one paragraph), a link to the repo or
+              demo, and your <code>gremlord cost --receipt</code> output
+              pasted in full as the receipt.
+            </li>
+            <li>Honor system on receipts. A faked log to win a README mention is a sad life.</li>
+            <li>
+              One entry per person. Entries close 7 days after the
+              announcement post.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="how-to-enter">
+        <div class="container">
+          <h2>How to enter</h2>
+
+          <div class="flow">
+            <div class="steps">
+              <div class="step">
+                <div class="n">1</div>
+                <div>
+                  <h4>Install gremlord</h4>
+                  <p>
+                    One command, see the
+                    <a
+                      href="https://github.com/gremlord/gremlord#the-25-challenge"
+                      target="_blank"
+                      rel="noopener"
+                      >README</a
+                    >
+                    for details.
+                  </p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="n">2</div>
+                <div>
+                  <h4>Set your $25 cap</h4>
+                  <p>
+                    <code>gremlord budget set --daily 25</code> — the router
+                    refuses the next request once you hit it.
+                  </p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="n">3</div>
+                <div>
+                  <h4>Reply with your build + cost log</h4>
+                  <p>
+                    Reply to the
+                    <a
+                      href="https://github.com/gremlord/gremlord/discussions/29"
+                      target="_blank"
+                      rel="noopener"
+                      >pinned Discussion</a
+                    >
+                    with what you built, a link, and the full output of
+                    <code>gremlord cost --receipt</code> as your receipt.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="codeblock" aria-label="Example commands">
+              <div class="bar">
+                <i style="background:#ff5f57"></i><i style="background:#febc2e"></i
+                ><i style="background:#28c840"></i>
+              </div>
+              <pre><span class="c-com"># install</span>
+<span class="c-p">❯</span> <span class="c-cmd">curl -fsSL https://raw.githubusercontent.com/gremlord/gremlord/main/install.sh | sh</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord setup</span>
+
+<span class="c-com"># cap it at $25/day</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord budget set --daily 25</span>
+
+<span class="c-com"># your receipt — paste this in full</span>
+<span class="c-p">❯</span> <span class="c-cmd">gremlord cost --receipt</span></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="judging">
+        <div class="container">
+          <h2>Judging &amp; prize</h2>
+          <div class="pick-grid">
+            <div class="pick">
+              <h2>Community pick</h2>
+              <ul>
+                <li>Most thumbs-up on the discussion entry when the window closes.</li>
+                <li>Recognition only — permanent leaderboard + README slot.</li>
+              </ul>
+            </div>
+            <div class="pick pick-a">
+              <h2>Founder's pick</h2>
+              <ul>
+                <li>
+                  Most impressive build under budget, chosen by
+                  <a
+                    href="https://github.com/MaorBril"
+                    target="_blank"
+                    rel="noopener"
+                    >@MaorBril</a
+                  >.
+                </li>
+                <li>Wins a <strong>$25 bounty</strong>, plus a permanent leaderboard + README slot.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leaderboard">
+        <div class="container">
+          <h2>Leaderboard</h2>
+          <p class="section-lead">Standings update daily.</p>
+
+          <div class="landscape">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Builder</th>
+                  <th>Build</th>
+                  <th>Spend</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+                <tr>
+                  <td colspan="5">Loading standings&hellip;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="landscape-note">
+            Entries close <strong>{{CHALLENGE_CLOSE_DATE}}</strong>
+            (announcement date + 7 days). Standings also live on the
+            <a
+              href="https://github.com/gremlord/gremlord#challenge-leaderboard"
+              target="_blank"
+              rel="noopener"
+              >README leaderboard</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="container">
+          <h2>Enter before the window closes.</h2>
+          <div class="cta-row">
+            <a
+              class="btn-secondary"
+              href="https://github.com/gremlord/gremlord/discussions/29"
+              target="_blank"
+              rel="noopener"
+              >Enter on GitHub →</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container foot-inner">
+        <div>
+          <span class="brand"><span class="chev">❯</span> gremlord</span> · MIT
+          License
+        </div>
+        <div class="foot-links">
+          <a href="/">Home</a>
+          <a
+            href="https://github.com/gremlord/gremlord"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          <a
+            href="https://github.com/gremlord/gremlord#readme"
+            target="_blank"
+            rel="noopener"
+            >Docs</a
+          >
+          <a
+            href="https://github.com/gremlord/gremlord/discussions/29"
+            target="_blank"
+            rel="noopener"
+            >Discussions</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+    <script src="../main.js" defer></script>
+    <script>
+      // Leaderboard rows live in leaderboard.json, edited without touching
+      // this markup. Fetch-and-render degrades to a static note on failure
+      // (e.g. viewed from the filesystem instead of a server).
+      (function () {
+        var body = document.getElementById('leaderboard-body');
+        if (!body) return;
+
+        function cell(text) {
+          var td = document.createElement('td');
+          td.textContent = text;
+          return td;
+        }
+
+        fetch('leaderboard.json')
+          .then(function (r) {
+            if (!r.ok) throw new Error('bad response');
+            return r.json();
+          })
+          .then(function (rows) {
+            body.textContent = '';
+            if (!rows || !rows.length) {
+              var empty = document.createElement('tr');
+              var td = document.createElement('td');
+              td.colSpan = 5;
+              td.textContent = 'No entries yet — be the first.';
+              empty.appendChild(td);
+              body.appendChild(empty);
+              return;
+            }
+            rows.forEach(function (row) {
+              var tr = document.createElement('tr');
+              if (row.example) tr.classList.add('example-row');
+              tr.appendChild(cell(row.rank));
+              tr.appendChild(
+                cell(row.builder + (row.example ? ' (example)' : ''))
+              );
+              tr.appendChild(cell(row.build));
+              tr.appendChild(cell(row.spend));
+              var linkTd = document.createElement('td');
+              if (row.link && row.link !== '#') {
+                var a = document.createElement('a');
+                a.href = row.link;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = 'view';
+                linkTd.appendChild(a);
+              } else {
+                linkTd.textContent = '—';
+              }
+              tr.appendChild(linkTd);
+              body.appendChild(tr);
+            });
+          })
+          .catch(function () {
+            body.textContent = '';
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+            td.colSpan = 5;
+            td.textContent = 'Standings unavailable right now.';
+            tr.appendChild(td);
+            body.appendChild(tr);
+          });
+      })();
+    </script>
+  </body>
+</html>

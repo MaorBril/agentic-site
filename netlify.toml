@@ -42,3 +42,9 @@ cache-control = "public, max-age=0, must-revalidate"
 for = "/compare/*"
 [headers.values]
 cache-control = "public, max-age=0, must-revalidate"
+
+# Leaderboard standings update daily — keep the page and its data fresh
+[[headers]]
+for = "/challenge/*"
+[headers.values]
+cache-control = "public, max-age=0, must-revalidate"
