@@ -1,10 +1,9 @@
 [
   {
     "rank": 1,
-    "builder": "example",
-    "build": "gremlord peers autocomplete for zsh",
-    "spend": "$—",
-    "link": "#",
-    "example": true
+    "builder": "s97472091-pixel",
+    "build": "whatcost — forensic cost replay for agent workloads",
+    "spend": "$1.30",
+    "link": "https://github.com/s97472091-pixel/whatcost"
   }
 ]
